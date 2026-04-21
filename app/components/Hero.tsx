@@ -3,7 +3,7 @@
 export default function Hero({ onContact }: { onContact: () => void }) {
   return (
     <section className="pt-36 pb-24 px-8">
-      <div className="max-w-[1100px] mx-auto flex flex-col-reverse items-center gap-12 md:flex-row md:items-center md:gap-16">
+      <div className="max-w-[1100px] mx-auto flex flex-col-reverse items-center gap-12 md:flex-row md:items-end md:gap-16">
         <div className="flex-1 min-w-0 w-full">
           <div style={{ fontSize: 12, fontWeight: 500, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--color-muted)', marginBottom: 20 }}>
             Websites for London tradespeople
@@ -45,14 +45,11 @@ export default function Hero({ onContact }: { onContact: () => void }) {
 
         {/* Photo placeholder */}
         <div
-          className="shrink-0 flex flex-col items-center justify-center gap-3 w-full md:w-[440px]"
-          style={{ height: 420, borderRadius: 'var(--radius-card)', background: 'var(--color-subtle)', border: '1px solid var(--color-border)' }}
+          className="shrink-0 w-full md:w-[345px]"
+          style={{ height: 378, borderRadius: 11, background: 'var(--color-subtle)', border: '1px solid var(--color-border)', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 8 }}
         >
-          <div style={{ width: 80, height: 80, borderRadius: '50%', background: 'var(--color-border)' }} />
-          <div style={{ fontSize: 13, color: 'var(--color-muted)', textAlign: 'center' }}>
-            Robbie's photo here<br />
-            <span style={{ fontSize: 11 }}>Direct eye contact, natural light</span>
-          </div>
+          <div style={{ width: 64, height: 64, borderRadius: '50%', background: 'var(--color-border)' }} />
+          <div style={{ fontSize: 12, color: 'var(--color-muted)', textAlign: 'center' }}>Photo placeholder</div>
         </div>
       </div>
     </section>

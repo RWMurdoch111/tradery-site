@@ -7,6 +7,7 @@ import VideoExplainer from './components/VideoExplainer'
 import SocialProof from './components/SocialProof'
 import Pricing from './components/Pricing'
 import Examples from './components/Examples'
+import About from './components/About'
 import ContactModal from './components/ContactModal'
 import Footer from './components/Footer'
 
@@ -23,6 +24,7 @@ export default function Home() {
         <SocialProof />
         <Examples />
         <Pricing onContact={() => setShowContact(true)} />
+        <About />
       </main>
       <Footer onContact={() => setShowContact(true)} />
       {showContact && <ContactModal onClose={() => setShowContact(false)} />}
