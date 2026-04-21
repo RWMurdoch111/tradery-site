@@ -6,15 +6,14 @@ export default function Hero({ onContact }: { onContact: () => void }) {
       <div className="max-w-[1100px] mx-auto flex flex-col-reverse items-center gap-12 md:flex-row md:items-center md:gap-16">
         <div className="flex-1 min-w-0 w-full">
           <div style={{ fontSize: 12, fontWeight: 500, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--color-muted)', marginBottom: 20 }}>
-            London · Bespoke websites
+            Websites for London tradespeople
           </div>
           <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(40px, 5vw, 68px)', fontWeight: 500, lineHeight: 1.1, letterSpacing: '-0.02em', color: 'var(--color-ink)', marginBottom: 24 }}>
-            You see the site<br />
-            <em style={{ color: 'var(--color-accent)', fontStyle: 'italic' }}>before you pay</em><br />
-            a penny.
+            Your website,<br />
+            <em style={{ color: 'var(--color-accent)', fontStyle: 'italic' }}>built in 48 hours.</em>
           </h1>
           <p style={{ fontSize: 18, lineHeight: 1.65, color: 'var(--color-ink-3)', maxWidth: 460, marginBottom: 36 }}>
-            I'm Robbie. I build bespoke websites for London tradespeople — plumbers, electricians, builders. One price. Full handover. You own everything.
+            One price. £650. No monthly fees. Full handover. You own everything.
           </p>
           <div className="grid gap-3" style={{ gridTemplateColumns: '1fr 1fr', maxWidth: 460 }}>
             <button

@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mark Ellis Plumbing — Plumbing Specialist, London</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ── Tokens ─────────────────────────────────────────── */
+    :root {
+      --navy:   #1a2744;
+      --navy-d: #111c32;
+      --gold:   #c9a84c;
+      --gold-l: #e8d08a;
+      --cream:  #faf8f4;
+      --warm:   #f2ede4;
+      --text:   #1a1a1a;
+      --muted:  #6b6355;
+      --border: rgba(26,39,68,0.12);
+
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --sans:  'DM Sans', system-ui, sans-serif;
+
+      --max: 1240px;
+      --pad: clamp(1.25rem, 4vw, 3rem);
+    }
+
+    /* ── Reset ───────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--sans); color: var(--text); background: var(--cream); -webkit-font-smoothing: antialiased; }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+
+    /* ── Utilities ────────────────────────────────────────── */
+    .container { max-width: var(--max); margin: 0 auto; padding: 0 var(--pad); }
+    .gold-rule { display: block; width: 3rem; height: 2px; background: var(--gold); }
+    .label { font-family: var(--sans); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); }
+    .section-head { margin-bottom: 3.5rem; }
+    .section-head h2 { font-family: var(--serif); font-size: clamp(2.4rem, 4vw, 3.6rem); font-weight: 300; line-height: 1.1; color: var(--navy); margin-top: 0.75rem; }
+    .section-head p { margin-top: 1rem; max-width: 42ch; color: var(--muted); font-size: 1.05rem; line-height: 1.65; }
+
+    /* ── Nav ─────────────────────────────────────────────── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(26,39,68,0.97);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(201,168,76,0.2);
+      padding: 0 var(--pad);
+    }
+    .nav-inner {
+      max-width: var(--max); margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 68px;
+    }
+    .nav-logo {
+      font-family: var(--serif); font-size: 1.3rem; font-weight: 600;
+      color: white; letter-spacing: 0.04em;
+    }
+    .nav-logo span { color: var(--gold); }
+    .nav-links { display: flex; gap: 2rem; }
+    .nav-links a { font-size: 0.82rem; font-weight: 500; letter-spacing: 0.08em; color: rgba(255,255,255,0.75); text-transform: uppercase; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-cta {
+      background: var(--gold); color: var(--navy-d); border: none; cursor: pointer;
+      font-family: var(--sans); font-size: 0.82rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+      padding: 0.6rem 1.4rem; transition: background 0.2s, transform 0.15s;
+    }
+    .nav-cta:hover { background: var(--gold-l); transform: translateY(-1px); }
+
+    /* ── Hero ─────────────────────────────────────────────── */
+    #hero {
+      min-height: 100vh;
+      background: var(--navy-d);
+      display: flex; flex-direction: column;
+      position: relative; overflow: hidden;
+      padding-top: 68px;
+    }
+    .hero-pattern {
+      position: absolute; inset: 0; opacity: 0.04;
+      background-image: repeating-linear-gradient(0deg, transparent, transparent 40px, rgba(255,255,255,0.4) 40px, rgba(255,255,255,0.4) 41px),
+        repeating-linear-gradient(90deg, transparent, transparent 40px, rgba(255,255,255,0.4) 40px, rgba(255,255,255,0.4) 41px);
+    }
+    .hero-content {
+      flex: 1; display: flex; align-items: center;
+      padding: clamp(4rem, 8vh, 7rem) var(--pad);
+      position: relative; z-index: 2;
+    }
+    .hero-grid {
+      max-width: var(--max); margin: 0 auto; width: 100%;
+      display: grid; grid-template-columns: 1fr 420px; gap: 4rem; align-items: center;
+    }
+    .hero-eyebrow { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; }
+    .hero-eyebrow span { color: rgba(255,255,255,0.5); font-size: 0.78rem; letter-spacing: 0.14em; text-transform: uppercase; }
+    .hero-badge { background: var(--gold); color: var(--navy-d); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.3rem 0.7rem; }
+    .hero-title {
+      font-family: var(--serif); font-size: clamp(3rem, 6vw, 5.5rem); font-weight: 300;
+      color: white; line-height: 1.05; letter-spacing: -0.01em;
+    }
+    .hero-title em { font-style: italic; color: var(--gold); }
+    .hero-sub {
+      margin-top: 1.75rem; max-width: 46ch;
+      color: rgba(255,255,255,0.65); font-size: 1.05rem; line-height: 1.7;
+    }
+    .hero-actions { display: flex; align-items: center; gap: 1.5rem; margin-top: 2.5rem; }
+    .btn-primary {
+      background: var(--gold); color: var(--navy-d); border: none; cursor: pointer;
+      font-family: var(--sans); font-size: 0.88rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+      padding: 0.9rem 2rem; transition: background 0.2s, transform 0.15s;
+      display: inline-block;
+    }
+    .btn-primary:hover { background: var(--gold-l); transform: translateY(-2px); }
+    .btn-outline {
+      color: rgba(255,255,255,0.75); font-size: 0.88rem; font-weight: 500;
+      display: flex; align-items: center; gap: 0.5rem; transition: color 0.2s;
+    }
+    .btn-outline:hover { color: var(--gold); }
+    .btn-outline svg { width: 16px; }
+
+    .hero-phone {
+      margin-top: 3.5rem; padding-top: 2rem;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      display: flex; align-items: center; gap: 1rem;
+    }
+    .hero-phone-icon { width: 42px; height: 42px; background: rgba(201,168,76,0.15); border: 1px solid rgba(201,168,76,0.3); display: flex; align-items: center; justify-content: center; }
+    .hero-phone a { font-family: var(--serif); font-size: 1.6rem; font-weight: 400; color: white; letter-spacing: 0.02em; }
+    .hero-phone a:hover { color: var(--gold); }
+    .hero-phone-label { font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 0.15rem; }
+
+    /* Stats panel */
+    .hero-stats {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(201,168,76,0.2);
+      padding: 2.5rem;
+    }
+    .stat-item { padding: 1.25rem 0; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    .stat-item:first-child { padding-top: 0; }
+    .stat-item:last-child { border-bottom: none; padding-bottom: 0; }
+    .stat-num { font-family: var(--serif); font-size: 3rem; font-weight: 300; color: var(--gold); line-height: 1; }
+    .stat-label { font-size: 0.8rem; color: rgba(255,255,255,0.5); margin-top: 0.3rem; letter-spacing: 0.06em; }
+
+    .hero-scroll {
+      padding: 1.5rem var(--pad); text-align: center; position: relative; z-index: 2;
+    }
+    .hero-scroll span { font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.3); }
+
+    /* ── About ────────────────────────────────────────────── */
+    #about { padding: 7rem 0; background: var(--cream); }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+    .about-image-wrap { position: relative; }
+    .about-photo-placeholder {
+      aspect-ratio: 3/4; background: var(--warm);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      border: 1px solid var(--border); position: relative; overflow: hidden;
+    }
+    .about-photo-placeholder::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: repeating-linear-gradient(
+        -45deg, transparent, transparent 8px,
+        rgba(26,39,68,0.04) 8px, rgba(26,39,68,0.04) 9px
+      );
+    }
+    .placeholder-label { font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); opacity: 0.6; position: relative; z-index: 1; text-align: center; }
+    .about-badge-block {
+      position: absolute; bottom: -1.5rem; right: -1.5rem;
+      background: var(--navy); padding: 1.5rem 2rem;
+      border-left: 3px solid var(--gold);
+    }
+    .about-badge-block .num { font-family: var(--serif); font-size: 2.4rem; color: white; font-weight: 300; line-height: 1; }
+    .about-badge-block .sub { font-size: 0.72rem; color: rgba(255,255,255,0.5); letter-spacing: 0.1em; text-transform: uppercase; margin-top: 0.3rem; }
+    .about-text p { color: var(--muted); line-height: 1.75; margin-bottom: 1.25rem; font-size: 1.02rem; }
+    .about-checks { margin: 2rem 0; display: flex; flex-direction: column; gap: 0.75rem; }
+    .check-item { display: flex; align-items: flex-start; gap: 0.75rem; }
+    .check-icon { width: 18px; height: 18px; background: var(--gold); flex-shrink: 0; display: flex; align-items: center; justify-content: center; margin-top: 2px; }
+    .check-icon svg { width: 10px; height: 10px; }
+    .check-item span { font-size: 0.95rem; color: var(--text); }
+    .checkatrade-badge {
+      display: inline-flex; align-items: center; gap: 0.75rem;
+      border: 1px solid var(--border); padding: 0.75rem 1.25rem; margin-top: 1.5rem;
+    }
+    .checkatrade-badge .ct-icon { width: 28px; height: 28px; background: #00a651; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+    .checkatrade-badge .ct-icon svg { width: 14px; }
+    .checkatrade-badge span { font-size: 0.82rem; font-weight: 500; color: var(--navy); }
+
+    /* ── Services ─────────────────────────────────────────── */
+    #services { padding: 7rem 0; background: var(--navy); }
+    #services .section-head h2 { color: white; }
+    #services .section-head p { color: rgba(255,255,255,0.55); }
+    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(255,255,255,0.07); }
+    .service-card {
+      background: var(--navy); padding: 2.5rem 2rem;
+      transition: background 0.25s;
+      position: relative; overflow: hidden;
+    }
+    .service-card::after {
+      content: '';
+      position: absolute; bottom: 0; left: 0; right: 0;
+      height: 2px; background: var(--gold);
+      transform: scaleX(0); transform-origin: left;
+      transition: transform 0.3s ease;
+    }
+    .service-card:hover { background: rgba(255,255,255,0.04); }
+    .service-card:hover::after { transform: scaleX(1); }
+    .service-card.primary { background: rgba(201,168,76,0.08); }
+    .service-num { font-family: var(--serif); font-size: 3.5rem; font-weight: 300; color: rgba(255,255,255,0.07); line-height: 1; margin-bottom: 1rem; }
+    .service-card h3 { font-family: var(--serif); font-size: 1.5rem; font-weight: 400; color: white; margin-bottom: 0.75rem; }
+    .service-card p { font-size: 0.88rem; color: rgba(255,255,255,0.5); line-height: 1.65; }
+    .service-tag { display: inline-block; margin-top: 1.25rem; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); }
+    .services-secondary { margin-top: 3rem; }
+    .services-secondary h4 { font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 1rem; }
+    .services-secondary-list { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .services-secondary-list li {
+      border: 1px solid rgba(255,255,255,0.12); color: rgba(255,255,255,0.55);
+      font-size: 0.82rem; padding: 0.35rem 0.9rem; letter-spacing: 0.04em;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .services-secondary-list li:hover { border-color: var(--gold); color: var(--gold); }
+
+    /* ── Case Studies ─────────────────────────────────────── */
+    #work { padding: 7rem 0; background: var(--warm); }
+    .work-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+    .case-card { background: white; position: relative; overflow: hidden; cursor: pointer; }
+    .case-img {
+      aspect-ratio: 4/3; background: var(--warm);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      overflow: hidden; position: relative;
+    }
+    .case-img::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: repeating-linear-gradient(
+        -45deg, transparent, transparent 10px,
+        rgba(26,39,68,0.05) 10px, rgba(26,39,68,0.05) 11px
+      );
+    }
+    .case-img .img-label { font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); opacity: 0.7; position: relative; z-index: 1; text-align: center; }
+    .case-num {
+      position: absolute; top: 1rem; left: 1rem;
+      background: var(--navy); color: var(--gold);
+      font-family: var(--serif); font-size: 0.9rem; font-weight: 600;
+      padding: 0.2rem 0.6rem;
+    }
+    .case-body { padding: 1.75rem; }
+    .case-type { font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.6rem; }
+    .case-card h3 { font-family: var(--serif); font-size: 1.4rem; font-weight: 400; color: var(--navy); line-height: 1.25; margin-bottom: 0.75rem; }
+    .case-card p { font-size: 0.9rem; color: var(--muted); line-height: 1.65; }
+    .case-footer { padding: 1rem 1.75rem; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+    .case-detail { font-size: 0.78rem; color: var(--muted); }
+    .case-detail strong { color: var(--navy); }
+
+    /* ── Testimonials ─────────────────────────────────────── */
+    #testimonials { padding: 7rem 0; background: var(--cream); }
+    .testi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 3.5rem; }
+    .testi-card { padding: 2.25rem; border: 1px solid var(--border); position: relative; }
+    .testi-card::before { content: '\201C'; font-family: var(--serif); font-size: 5rem; color: var(--gold); opacity: 0.3; position: absolute; top: 1rem; right: 1.5rem; line-height: 1; }
+    .stars { color: var(--gold); font-size: 0.9rem; margin-bottom: 1rem; letter-spacing: 0.1em; }
+    .testi-card blockquote { font-family: var(--serif); font-size: 1.15rem; font-weight: 300; color: var(--navy); line-height: 1.6; font-style: italic; }
+    .testi-author { margin-top: 1.5rem; padding-top: 1.25rem; border-top: 1px solid var(--border); }
+    .testi-author strong { display: block; font-size: 0.88rem; font-weight: 600; color: var(--text); }
+    .testi-author span { font-size: 0.78rem; color: var(--muted); }
+    .testi-overall {
+      margin-top: 3rem; background: var(--navy); padding: 2rem 2.5rem;
+      display: flex; align-items: center; gap: 3rem;
+    }
+    .testi-score { font-family: var(--serif); font-size: 4rem; font-weight: 300; color: white; line-height: 1; }
+    .testi-score-label { font-size: 0.78rem; color: rgba(255,255,255,0.5); margin-top: 0.3rem; }
+    .testi-sep { width: 1px; height: 3rem; background: rgba(255,255,255,0.15); }
+    .testi-source { display: flex; flex-direction: column; gap: 0.25rem; }
+    .testi-source span { font-size: 0.8rem; color: rgba(255,255,255,0.6); }
+    .testi-source strong { font-size: 0.88rem; color: var(--gold); }
+    .checkatrade-color { color: #00a651 !important; }
+
+    /* ── Qualifications ───────────────────────────────────── */
+    #quals { padding: 7rem 0; background: var(--navy); }
+    #quals .section-head h2 { color: white; }
+    #quals .section-head p { color: rgba(255,255,255,0.55); }
+    .quals-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+    .qual-card { border: 1px solid rgba(255,255,255,0.1); padding: 2rem 1.5rem; transition: border-color 0.25s; }
+    .qual-card:hover { border-color: rgba(201,168,76,0.4); }
+    .qual-icon { width: 44px; height: 44px; border: 1px solid var(--gold); display: flex; align-items: center; justify-content: center; margin-bottom: 1.25rem; }
+    .qual-icon svg { width: 20px; height: 20px; stroke: var(--gold); fill: none; stroke-width: 1.5; }
+    .qual-card h3 { font-family: var(--serif); font-size: 1.2rem; font-weight: 400; color: white; margin-bottom: 0.5rem; }
+    .qual-card p { font-size: 0.85rem; color: rgba(255,255,255,0.45); line-height: 1.55; }
+
+    /* ── Service Areas ────────────────────────────────────── */
+    #areas { padding: 7rem 0; background: var(--warm); }
+    .areas-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+    .areas-map-placeholder {
+      aspect-ratio: 1.1; background: var(--cream); border: 1px solid var(--border);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      position: relative; overflow: hidden;
+    }
+    .areas-map-placeholder::before {
+      content: ''; position: absolute; inset: 0;
+      background: repeating-linear-gradient(0deg, transparent, transparent 20px, rgba(26,39,68,0.03) 20px, rgba(26,39,68,0.03) 21px),
+        repeating-linear-gradient(90deg, transparent, transparent 20px, rgba(26,39,68,0.03) 20px, rgba(26,39,68,0.03) 21px);
+    }
+    .areas-map-placeholder .img-label { font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); opacity: 0.6; position: relative; text-align: center; }
+    .areas-list { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; }
+    .area-item { display: flex; align-items: center; gap: 0.6rem; padding: 0.6rem 0; border-bottom: 1px solid var(--border); font-size: 0.9rem; color: var(--text); }
+    .area-dot { width: 6px; height: 6px; background: var(--gold); flex-shrink: 0; }
+    .areas-note { margin-top: 2rem; padding: 1.25rem 1.5rem; border-left: 3px solid var(--gold); background: rgba(201,168,76,0.06); }
+    .areas-note p { font-size: 0.88rem; color: var(--muted); line-height: 1.6; }
+
+    /* ── FAQ ──────────────────────────────────────────────── */
+    #faq { padding: 7rem 0; background: var(--cream); }
+    .faq-layout { display: grid; grid-template-columns: 1fr 2fr; gap: 5rem; }
+    .faq-list { display: flex; flex-direction: column; gap: 1px; }
+    .faq-item { border-bottom: 1px solid var(--border); }
+    .faq-q {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.25rem 0; cursor: pointer;
+      font-weight: 500; font-size: 0.97rem; color: var(--navy);
+      gap: 1rem; user-select: none;
+    }
+    .faq-q:hover { color: var(--gold); }
+    .faq-arrow { width: 20px; height: 20px; flex-shrink: 0; transition: transform 0.25s; }
+    .faq-a { font-size: 0.92rem; color: var(--muted); line-height: 1.7; padding-bottom: 1.25rem; display: none; }
+    .faq-item.open .faq-a { display: block; }
+    .faq-item.open .faq-arrow { transform: rotate(180deg); }
+    .faq-item.open .faq-q { color: var(--gold); }
+
+    /* ── Contact ──────────────────────────────────────────── */
+    #contact { padding: 7rem 0; background: var(--navy-d); }
+    #contact .section-head h2 { color: white; }
+    #contact .section-head p { color: rgba(255,255,255,0.55); }
+    .contact-layout { display: grid; grid-template-columns: 1fr 1.4fr; gap: 5rem; }
+    .contact-details { display: flex; flex-direction: column; gap: 1.75rem; }
+    .contact-item { display: flex; gap: 1.25rem; align-items: flex-start; }
+    .contact-icon { width: 44px; height: 44px; border: 1px solid rgba(201,168,76,0.3); flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
+    .contact-icon svg { width: 18px; height: 18px; stroke: var(--gold); fill: none; stroke-width: 1.5; }
+    .contact-item-label { font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 0.3rem; }
+    .contact-item-val { font-size: 1.05rem; color: white; font-weight: 400; }
+    .contact-item-val a:hover { color: var(--gold); }
+    .contact-socials { margin-top: 2rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.08); }
+    .contact-socials h4 { font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 1rem; }
+    .social-icons { display: flex; gap: 0.75rem; }
+    .social-icon { width: 38px; height: 38px; border: 1px solid rgba(255,255,255,0.12); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.5); font-size: 0.75rem; font-weight: 600; transition: border-color 0.2s, color 0.2s; }
+    .social-icon:hover { border-color: var(--gold); color: var(--gold); }
+    .contact-form { display: flex; flex-direction: column; gap: 1.25rem; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+    .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+    .form-group label { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.4); }
+    .form-group input, .form-group select, .form-group textarea {
+      background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.12); color: white;
+      padding: 0.85rem 1rem; font-family: var(--sans); font-size: 0.95rem;
+      outline: none; transition: border-color 0.2s;
+      -webkit-appearance: none;
+    }
+    .form-group select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='rgba(255,255,255,0.4)' stroke-width='1.5' fill='none'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 1rem center; }
+    .form-group select option { background: var(--navy-d); }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--gold); }
+    .form-group textarea { resize: vertical; min-height: 130px; }
+    .form-submit {
+      background: var(--gold); color: var(--navy-d); border: none; cursor: pointer;
+      font-family: var(--sans); font-size: 0.88rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 1.1rem 2.5rem; transition: background 0.2s, transform 0.15s;
+      align-self: flex-start; display: flex; align-items: center; gap: 0.6rem;
+    }
+    .form-submit:hover { background: var(--gold-l); transform: translateY(-2px); }
+    .form-success {
+      display: none; background: rgba(0,166,81,0.1); border: 1px solid rgba(0,166,81,0.3);
+      padding: 1.25rem 1.5rem; color: #4ede96; font-size: 0.92rem; line-height: 1.6;
+    }
+
+    /* ── Footer ───────────────────────────────────────────── */
+    footer { background: var(--navy-d); border-top: 1px solid rgba(255,255,255,0.06); padding: 2rem var(--pad); }
+    .footer-inner { max-width: var(--max); margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
+    .footer-logo { font-family: var(--serif); font-size: 1.1rem; color: white; font-weight: 400; }
+    .footer-logo span { color: var(--gold); }
+    .footer-text { font-size: 0.78rem; color: rgba(255,255,255,0.3); }
+
+    /* ── Responsive ────────────────────────────────────────── */
+    @media (max-width: 768px) {
+      /* Nav */
+      .nav-links { display: none; }
+      .nav-cta { font-size: 0.75rem; padding: 0.5rem 1rem; }
+
+      /* Hero */
+      .hero-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .hero-title { font-size: clamp(2.2rem, 8vw, 3rem); }
+      .hero-sub { font-size: 0.95rem; max-width: 100%; }
+      .hero-actions { flex-direction: column; align-items: flex-start; gap: 1rem; }
+      .btn-primary { width: 100%; text-align: center; }
+      .hero-phone { margin-top: 2rem; padding-top: 1.5rem; }
+      .hero-stats { padding: 1.75rem; }
+      .hero-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
+      .stat-item { padding: 1rem; border-bottom: 1px solid rgba(255,255,255,0.07); border-right: 1px solid rgba(255,255,255,0.07); }
+      .stat-item:nth-child(even) { border-right: none; }
+      .stat-item:nth-child(3), .stat-item:nth-child(4) { border-bottom: none; }
+      .stat-num { font-size: 2.2rem; }
+
+      /* About — text first, image second */
+      .about-grid { display: flex; flex-direction: column; gap: 3rem; }
+      .about-image-wrap { order: 2; }
+      .about-text { order: 1; }
+      .about-badge-block { display: none; }
+      #about { padding: 4rem 0; }
+
+      /* Services — 1 per row */
+      .services-grid { grid-template-columns: 1fr; }
+      #services { padding: 4rem 0; }
+
+      /* Work — 1 per row */
+      .work-grid { grid-template-columns: 1fr; }
+      #work { padding: 4rem 0; }
+
+      /* Testimonials — 1 per row */
+      .testi-grid { grid-template-columns: 1fr; }
+      .testi-overall { flex-wrap: wrap; gap: 1.5rem; padding: 1.5rem; }
+      .testi-sep { display: none; }
+      #testimonials { padding: 4rem 0; }
+
+      /* Qualifications — 2 per row */
+      .quals-grid { grid-template-columns: 1fr 1fr; gap: 1rem; }
+      #quals { padding: 4rem 0; }
+
+      /* Areas */
+      .areas-layout { display: block; }
+      .areas-map-placeholder { display: none; }
+      #areas { padding: 4rem 0; }
+
+      /* FAQ */
+      .faq-layout { grid-template-columns: 1fr; gap: 2.5rem; }
+      #faq { padding: 4rem 0; }
+
+      /* Contact */
+      .contact-layout { grid-template-columns: 1fr; gap: 3rem; }
+      .form-row { grid-template-columns: 1fr; }
+      .form-submit { width: 100%; justify-content: center; }
+      #contact { padding: 4rem 0; }
+
+      /* Footer */
+      .footer-inner { flex-direction: column; gap: 0.75rem; text-align: center; }
+
+      /* Section headings */
+      .section-head { margin-bottom: 2rem; }
+      .section-head h2 { font-size: clamp(1.8rem, 6vw, 2.4rem); }
+    }
+
+    /* ── Animations ────────────────────────────────────────── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate { opacity: 0; }
+    .animate.in { animation: fadeUp 0.6s ease forwards; }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">Mark Ellis <span>Plumbing</span></div>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#work">Work</a>
+      <a href="#testimonials">Reviews</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <a href="#contact" class="nav-cta">Get a Quote</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-pattern"></div>
+  <div class="hero-content">
+    <div class="hero-grid container">
+      <div>
+        <div class="hero-eyebrow">
+          <div class="hero-badge">London Based</div>
+          <span>Islington &amp; surrounding areas</span>
+        </div>
+        <h1 class="hero-title">London's Trusted<br /><em>Plumbing &amp; Heating</em><br />Specialist</h1>
+        <p class="hero-sub">From emergency call-outs to full bathroom refurbishments, Mark Ellis Plumbing delivers reliable, high-quality work across North London. Gas Safe registered, Checkatrade verified, and always on time.</p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn-primary">Get a Free Quote</a>
+          <a href="#work" class="btn-outline">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6.5"/><path d="M6 8h4M8 6l2 2-2 2"/></svg>
+            View Our Work
+          </a>
+        </div>
+        <div class="hero-phone">
+          <div class="hero-phone-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.35 12a19.79 19.79 0 01-3.07-8.67A2 2 0 012.27 1.18h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 9.06a16 16 0 006.84 6.84l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+          </div>
+          <div>
+            <div class="hero-phone-label">Call us anytime</div>
+            <a href="tel:+447700900123">+44 7700 900123</a>
+          </div>
+        </div>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-item">
+          <div class="stat-num">200+</div>
+          <div class="stat-label">Jobs Completed</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">5★</div>
+          <div class="stat-label">Checkatrade Rating</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">15+</div>
+          <div class="stat-label">Years in the Trade</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">N1</div>
+          <div class="stat-label">Islington &amp; North London</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-scroll"><span>Scroll to explore</span></div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-image-wrap">
+        <div class="about-photo-placeholder">
+          <img src="images/plumber_image.png" alt="Mark Ellis — Plumber" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" />
+        </div>
+        <div class="about-badge-block">
+          <div class="num">15+</div>
+          <div class="sub">Years in the trade</div>
+        </div>
+      </div>
+      <div class="about-text">
+        <span class="label">About Mark Ellis Plumbing</span>
+        <h2 style="font-family:var(--serif);font-size:clamp(2rem,3.5vw,3rem);font-weight:300;color:var(--navy);line-height:1.1;margin-top:0.75rem;margin-bottom:1.5rem;">Built on reliability,<br /><em style="font-style:italic;">finished with care</em></h2>
+        <p>Mark Ellis Plumbing is a sole-trader plumbing and heating business based in Islington, North London. After 15 years working for larger contractors, Mark went independent in 2018 — bringing the same standard of work but with the personal service only a sole trader can offer.</p>
+        <p>Whether it's a dripping tap, a new boiler, or a full bathroom strip-out and rebuild, Mark handles the job himself from start to finish. No subcontractors, no surprises — just straightforward, quality plumbing at a fair price.</p>
+        <div class="about-checks">
+          <div class="check-item">
+            <div class="check-icon"><svg viewBox="0 0 10 10" fill="none" stroke="#1a2744" stroke-width="2"><path d="M1.5 5l3 3 4-4"/></svg></div>
+            <span>Gas Safe registered (No. 123456)</span>
+          </div>
+          <div class="check-item">
+            <div class="check-icon"><svg viewBox="0 0 10 10" fill="none" stroke="#1a2744" stroke-width="2"><path d="M1.5 5l3 3 4-4"/></svg></div>
+            <span>Transparent pricing, no hidden costs</span>
+          </div>
+          <div class="check-item">
+            <div class="check-icon"><svg viewBox="0 0 10 10" fill="none" stroke="#1a2744" stroke-width="2"><path d="M1.5 5l3 3 4-4"/></svg></div>
+            <span>Fully insured, Checkatrade registered</span>
+          </div>
+          <div class="check-item">
+            <div class="check-icon"><svg viewBox="0 0 10 10" fill="none" stroke="#1a2744" stroke-width="2"><path d="M1.5 5l3 3 4-4"/></svg></div>
+            <span>200+ completed jobs across North London</span>
+          </div>
+        </div>
+        <div class="checkatrade-badge">
+          <div class="ct-icon"><svg viewBox="0 0 14 14" fill="none" stroke="white" stroke-width="2"><path d="M2 7l3.5 3.5 6-6"/></svg></div>
+          <span>Checkatrade Registered — Vetted &amp; Verified</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="container">
+    <div class="section-head">
+      <span class="label">What We Do</span>
+      <h2>Core services &amp; specialisms</h2>
+      <p>Plumbing and heating are the focus — from emergency repairs to full bathroom and boiler installations, handled personally from first call to sign-off.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card primary">
+        <div class="service-num">01</div>
+        <h3>General Plumbing</h3>
+        <p>Leaks, bursts, pipe replacements, tap and toilet installations, and all routine plumbing repairs. Emergency call-outs available — fast response across Islington and surrounding areas.</p>
+        <span class="service-tag">Core Trade</span>
+      </div>
+      <div class="service-card primary">
+        <div class="service-num">02</div>
+        <h3>Bathroom Fitting</h3>
+        <p>Full bathroom refurbishments from demolition to final finish. Supply and fit, or labour-only — including tiling, sanitaryware, shower enclosures, and all associated plumbing.</p>
+        <span class="service-tag">Signature Service</span>
+      </div>
+      <div class="service-card primary">
+        <div class="service-num">03</div>
+        <h3>Boilers &amp; Heating</h3>
+        <p>Gas Safe registered boiler installations, replacements, and servicing. Power flushing, radiator work, and full central heating systems. Worcester Bosch and Vaillant specialist.</p>
+        <span class="service-tag">Core Trade</span>
+      </div>
+      <div class="service-card">
+        <div class="service-num">04</div>
+        <h3>Landlord Services</h3>
+        <p>Annual gas safety certificates (CP12), boiler services, and reactive maintenance for rental properties. Flexible scheduling to work around tenants.</p>
+        <span class="service-tag">Specialist</span>
+      </div>
+      <div class="service-card">
+        <div class="service-num">05</div>
+        <h3>Wet Rooms</h3>
+        <p>Design and installation of fully waterproofed wet rooms — tanking, tiling, linear drains, and thermostatic shower systems. Ideal for accessible bathrooms and modern refurbs.</p>
+        <span class="service-tag">Specialist</span>
+      </div>
+      <div class="service-card">
+        <div class="service-num">06</div>
+        <h3>Unvented Cylinders</h3>
+        <p>Supply and installation of unvented hot water cylinders for improved flow rates and pressure. G3 qualified installation to Part L building regulations.</p>
+        <span class="service-tag">Primary Trade</span>
+      </div>
+    </div>
+    <div class="services-secondary">
+      <h4>Additional services</h4>
+      <ul class="services-secondary-list">
+        <li>Power Flushing</li>
+        <li>Leak Detection</li>
+        <li>Outside Taps</li>
+        <li>Soil &amp; Waste Pipework</li>
+        <li>Kitchen Plumbing</li>
+        <li>Underfloor Heating</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- CASE STUDIES -->
+<section id="work">
+  <div class="container">
+    <div class="section-head">
+      <span class="label">Portfolio</span>
+      <h2>Selected work</h2>
+      <p>A snapshot of completed projects. Full photo galleries available on request or via our social channels.</p>
+    </div>
+    <div class="work-grid">
+      <div class="case-card animate">
+        <div class="case-img" style="background:none;">
+          <div class="case-num">01</div>
+          <img src="images/case_study_2.png" alt="Marble bathroom refurbishment" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" />
+        </div>
+        <div class="case-body">
+          <div class="case-type">Full Refurbishment</div>
+          <h3>Marble Bathroom Rebuild</h3>
+          <p>Full strip-out and rebuild — large-format marble-effect porcelain throughout, frameless walk-in shower, floating vanity unit with under-lit basin, and all new plumbing to modern standards.</p>
+        </div>
+        <div class="case-footer">
+          <div class="case-detail"><strong>Location:</strong> Islington, N1</div>
+          <div class="case-detail"><strong>Duration:</strong> 7 days</div>
+        </div>
+      </div>
+      <div class="case-card animate" style="animation-delay:0.1s">
+        <div class="case-img" style="background:none;">
+          <div class="case-num">02</div>
+          <img src="images/case_study_1.png" alt="Kitchen plumbing fit-out" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" />
+        </div>
+        <div class="case-body">
+          <div class="case-type">Kitchen Plumbing</div>
+          <h3>Full Kitchen Plumbing Fit-Out</h3>
+          <p>Complete replumbing of a new-build kitchen — sink and dishwasher connections, boiling water tap install, new waste runs, and full isolation valve setup throughout.</p>
+        </div>
+        <div class="case-footer">
+          <div class="case-detail"><strong>Location:</strong> Highbury, N5</div>
+          <div class="case-detail"><strong>Duration:</strong> 2 days</div>
+        </div>
+      </div>
+      <div class="case-card animate" style="animation-delay:0.2s">
+        <div class="case-img" style="background:none;">
+          <div class="case-num">03</div>
+          <img src="images/case_study_3.png" alt="Freestanding bath installation" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" />
+        </div>
+        <div class="case-body">
+          <div class="case-type">Bathroom Installation</div>
+          <h3>Freestanding Bath &amp; Stone Tiling</h3>
+          <p>Supply and installation of a freestanding bath with floor-mounted tap, full travertine stone tiling, and new waste and supply runs. A clean, spa-like finish on a tight footprint.</p>
+        </div>
+        <div class="case-footer">
+          <div class="case-detail"><strong>Location:</strong> Canonbury, N1</div>
+          <div class="case-detail"><strong>Duration:</strong> 4 days</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="container">
+    <div class="section-head">
+      <span class="label">Reviews</span>
+      <h2>What clients say</h2>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card animate">
+        <div class="stars">★★★★★</div>
+        <blockquote>"Mark completely transformed our bathroom — the tiling is immaculate and everything was finished on time and on budget. He kept us informed throughout and left the place spotless."</blockquote>
+        <div class="testi-author">
+          <strong>Claire T.</strong>
+          <span>Full bathroom refurbishment · Islington</span>
+        </div>
+      </div>
+      <div class="testi-card animate" style="animation-delay:0.1s">
+        <div class="stars">★★★★★</div>
+        <blockquote>"Our boiler packed up on a Friday evening. Mark was with us by Saturday morning, diagnosed the fault, and had a new one fitted by Monday. Incredibly professional and reasonably priced."</blockquote>
+        <div class="testi-author">
+          <strong>James R.</strong>
+          <span>Emergency boiler replacement · Highbury</span>
+        </div>
+      </div>
+      <div class="testi-card animate" style="animation-delay:0.2s">
+        <div class="stars">★★★★★</div>
+        <blockquote>"Used Mark for a full bathroom refit and then again for landlord gas certs on two flats. Honest, reliable, and genuinely knows his stuff. He's the only plumber I'll call now."</blockquote>
+        <div class="testi-author">
+          <strong>Priya M.</strong>
+          <span>Bathroom fit &amp; landlord services · Finsbury Park</span>
+        </div>
+      </div>
+    </div>
+    <div class="testi-overall">
+      <div>
+        <div class="testi-score">5.0</div>
+        <div class="testi-score-label">Average rating</div>
+      </div>
+      <div class="testi-sep"></div>
+      <div class="testi-source">
+        <span>Verified reviews on</span>
+        <strong class="checkatrade-color">Checkatrade</strong>
+      </div>
+      <div class="testi-sep"></div>
+      <div class="testi-source">
+        <span>Also rated on</span>
+        <strong>Google Reviews</strong>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUALIFICATIONS -->
+<section id="quals">
+  <div class="container">
+    <div class="section-head">
+      <span class="label">Credentials</span>
+      <h2>Registered &amp; qualified</h2>
+      <p>Every job is carried out by a vetted, insured professional. Here's what Mark brings to every project.</p>
+    </div>
+    <div class="quals-grid">
+      <div class="qual-card">
+        <div class="qual-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6L12 2z"/></svg>
+        </div>
+        <h3>Checkatrade Registered</h3>
+        <p>Fully vetted, background-checked, and reviewed on one of the UK's most trusted trade platforms.</p>
+      </div>
+      <div class="qual-card">
+        <div class="qual-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3>Fully Insured</h3>
+        <p>Public liability and professional indemnity insurance on all jobs. Your property is fully protected throughout.</p>
+      </div>
+      <div class="qual-card">
+        <div class="qual-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/></svg>
+        </div>
+        <h3>Gas Safe Registered</h3>
+        <p>Legally registered to work on gas appliances in the UK. All gas work certified and compliant with current regulations.</p>
+      </div>
+      <div class="qual-card">
+        <div class="qual-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        </div>
+        <h3>Prompt &amp; Reliable</h3>
+        <p>Mark turns up when he says he will. Clear communication from quote through to sign-off — no surprises.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICE AREAS -->
+<section id="areas">
+  <div class="container">
+    <div class="areas-layout">
+      <div>
+        <span class="label">Service Coverage</span>
+        <h2 style="font-family:var(--serif);font-size:clamp(2rem,3.5vw,3rem);font-weight:300;color:var(--navy);line-height:1.1;margin-top:0.75rem;margin-bottom:1rem;">Where we work</h2>
+        <p style="color:var(--muted);font-size:1rem;line-height:1.7;margin-bottom:2rem;">Based in Islington, Mark regularly works across North and Central London. Not sure if your area is covered? Just call — if he can get to you, he will.</p>
+        <div class="areas-list">
+          <div class="area-item"><div class="area-dot"></div>Islington (N1)</div>
+          <div class="area-item"><div class="area-dot"></div>Highbury (N5)</div>
+          <div class="area-item"><div class="area-dot"></div>Canonbury (N1)</div>
+          <div class="area-item"><div class="area-dot"></div>Finsbury Park (N4)</div>
+          <div class="area-item"><div class="area-dot"></div>Holloway (N7)</div>
+          <div class="area-item"><div class="area-dot"></div>Hackney (E8)</div>
+          <div class="area-item"><div class="area-dot"></div>Stoke Newington (N16)</div>
+          <div class="area-item"><div class="area-dot"></div>Camden (NW1)</div>
+          <div class="area-item"><div class="area-dot"></div>Clerkenwell (EC1)</div>
+          <div class="area-item"><div class="area-dot"></div>Angel (N1)</div>
+        </div>
+        <div class="areas-note">
+          <p><strong>Not on this list?</strong> Mark travels across Greater London for larger projects. Get in touch and he'll confirm coverage for your postcode.</p>
+        </div>
+      </div>
+      <div class="areas-map-placeholder">
+        <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="rgba(26,39,68,0.15)" stroke-width="1"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+        <div class="img-label" style="margin-top:0.75rem">London coverage map<br/>to be placed here</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="container">
+    <div class="faq-layout">
+      <div>
+        <span class="label">FAQ</span>
+        <h2 style="font-family:var(--serif);font-size:clamp(2rem,3.5vw,3rem);font-weight:300;color:var(--navy);line-height:1.1;margin-top:0.75rem;">Common questions</h2>
+        <p style="color:var(--muted);font-size:1rem;line-height:1.7;margin-top:1rem;">Can't find what you're looking for? Call directly — always happy to chat.</p>
+        <a href="tel:+447700900123" style="display:inline-flex;align-items:center;gap:0.6rem;margin-top:1.5rem;font-size:0.88rem;font-weight:600;color:var(--navy);text-transform:uppercase;letter-spacing:0.08em;border-bottom:2px solid var(--gold);padding-bottom:0.2rem;">
+          +44 7700 900123
+        </a>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item open">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            Do you offer free quotes?
+            <svg class="faq-arrow" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 7.5l5 5 5-5"/></svg>
+          </div>
+          <div class="faq-a">Yes — free, no-obligation quotes for all jobs. For larger projects Mark will visit in person; for smaller work he can often quote over the phone or via photos.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            How quickly can you start work?
+            <svg class="faq-arrow" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 7.5l5 5 5-5"/></svg>
+          </div>
+          <div class="faq-a">Emergency plumbing is prioritised — often same day or next day. For planned refurbishments and boiler installs, typical lead time is 1–2 weeks.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            Are you Gas Safe registered?
+            <svg class="faq-arrow" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 7.5l5 5 5-5"/></svg>
+          </div>
+          <div class="faq-a">Yes. Mark is Gas Safe registered (No. 123456) and fully insured with public liability cover. You can verify his registration on the Gas Safe Register website at any time.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            Do you work on weekends?
+            <svg class="faq-arrow" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 7.5l5 5 5-5"/></svg>
+          </div>
+          <div class="faq-a">Yes — Saturday appointments are available for planned work. Emergency call-outs are available seven days a week, including bank holidays.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            Do you supply materials or should I?
+            <svg class="faq-arrow" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 7.5l5 5 5-5"/></svg>
+          </div>
+          <div class="faq-a">Either works. Mark can supply all materials at trade prices, or work with sanitaryware and fittings you've chosen yourself. He'll advise on what suits your specification and budget.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            What areas of London do you cover?
+            <svg class="faq-arrow" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 7.5l5 5 5-5"/></svg>
+          </div>
+          <div class="faq-a">Based in Islington, Mark covers most of North and Central London — including Highbury, Canonbury, Finsbury Park, Holloway, Hackney, Stoke Newington, Camden, and Clerkenwell. He also travels further afield for larger projects.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="section-head">
+      <span class="label">Get In Touch</span>
+      <h2>Let's talk about your project</h2>
+      <p>Drop a message and Mark will get back to you within one working day — usually much faster.</p>
+    </div>
+    <div class="contact-layout">
+      <div>
+        <div class="contact-details">
+          <div class="contact-item">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.35 12a19.79 19.79 0 01-3.07-8.67A2 2 0 012.27 1.18h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 9.06a16 16 0 006.84 6.84l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+            </div>
+            <div>
+              <div class="contact-item-label">Phone</div>
+              <div class="contact-item-val"><a href="tel:+447700900123">+44 7700 900123</a></div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <div>
+              <div class="contact-item-label">Email</div>
+              <div class="contact-item-val"><a href="mailto:mark@markellis-plumbing.co.uk">mark@markellis-plumbing.co.uk</a></div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+            </div>
+            <div>
+              <div class="contact-item-label">Based in</div>
+              <div class="contact-item-val">Islington, North London</div>
+            </div>
+          </div>
+        </div>
+        <div class="contact-socials">
+          <h4>Follow our work</h4>
+          <div class="social-icons">
+            <a class="social-icon" href="#" title="YouTube">YT</a>
+            <a class="social-icon" href="#" title="TikTok">TK</a>
+            <a class="social-icon" href="#" title="Instagram">IG</a>
+            <a class="social-icon" href="#" title="Facebook">FB</a>
+            <a class="social-icon" href="#" title="Twitter/X">X</a>
+          </div>
+        </div>
+      </div>
+      <div>
+        <form class="contact-form" onsubmit="submitForm(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label>First name</label>
+              <input type="text" placeholder="John" required />
+            </div>
+            <div class="form-group">
+              <label>Last name</label>
+              <input type="text" placeholder="Smith" required />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Phone number</label>
+              <input type="tel" placeholder="+44 7700 900000" />
+            </div>
+            <div class="form-group">
+              <label>Email address</label>
+              <input type="email" placeholder="john@example.com" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Service required</label>
+            <select>
+              <option value="">Select a service...</option>
+              <option>General Plumbing</option>
+              <option>Bathroom Fitting</option>
+              <option>Boiler Installation / Replacement</option>
+              <option>Boiler Service</option>
+              <option>Landlord Gas Certificate (CP12)</option>
+              <option>Wet Room</option>
+              <option>Unvented Cylinder</option>
+              <option>General Maintenance</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Tell us about your project</label>
+            <textarea placeholder="Brief description of the work needed, your postcode, and any relevant details..."></textarea>
+          </div>
+          <button type="submit" class="form-submit">
+            Send Enquiry
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
+          <div class="form-success" id="form-success">
+            ✓ &nbsp;Thanks — we've received your enquiry and Mark will be in touch within one working day.
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">Mark Ellis <span>Plumbing</span></div>
+    <div class="footer-text">© 2026 Mark Ellis Plumbing · Islington, London · +44 7700 900123</div>
+    <div class="footer-text">Gas Safe Registered · Checkatrade Verified · Fully Insured</div>
+  </div>
+</footer>
+
+<script>
+  function toggleFaq(el) {
+    el.closest('.faq-item').classList.toggle('open');
+  }
+
+  function submitForm(e) {
+    e.preventDefault();
+    document.getElementById('form-success').style.display = 'block';
+    e.target.querySelector('.form-submit').style.opacity = '0.5';
+    e.target.querySelector('.form-submit').disabled = true;
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.animate').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

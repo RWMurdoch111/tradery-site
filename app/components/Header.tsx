@@ -19,7 +19,7 @@ export default function Header({ onContact }: { onContact: () => void }) {
         borderBottom: scrolled ? '1px solid #e2d8cc' : '1px solid transparent',
       }}
     >
-      <div className="max-w-[1100px] mx-auto px-8 h-16 flex items-center justify-between">
+      <div className="max-w-[1100px] mx-auto px-4 md:px-8 h-16 flex items-center justify-between">
         <div style={{ fontFamily: 'var(--font-display)', fontSize: 24, fontWeight: 500, color: 'var(--color-ink)', letterSpacing: '-0.01em', display: 'flex', alignItems: 'center', gap: 6 }}>
           Tradery
           <span style={{ display: 'inline-block', width: 20, height: 2, background: 'var(--color-accent)', verticalAlign: 'middle' }} />
@@ -29,6 +29,7 @@ export default function Header({ onContact }: { onContact: () => void }) {
             <a
               key={item}
               href={`#${item.toLowerCase().replace(/\s+/g, '-')}`}
+              className="hidden md:block"
               style={{ fontSize: 14, fontWeight: 500, color: 'var(--color-ink-2)', textDecoration: 'none', letterSpacing: '0.01em' }}
               onMouseEnter={e => (e.currentTarget.style.color = 'var(--color-accent)')}
               onMouseLeave={e => (e.currentTarget.style.color = 'var(--color-ink-2)')}

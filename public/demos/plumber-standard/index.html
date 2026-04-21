@@ -1,0 +1,1393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dave Higgins Plumbing & Heating — Stockport</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --accent: oklch(46% 0.17 148);
+    --accent-light: oklch(94% 0.05 148);
+    --accent-dark: oklch(35% 0.15 148);
+    --bg: oklch(97% 0.005 240);
+    --card: oklch(99.5% 0.003 240);
+    --text: oklch(18% 0.01 240);
+    --text-mid: oklch(44% 0.01 240);
+    --text-light: oklch(66% 0.01 240);
+    --border: oklch(89% 0.01 240);
+    --radius-sm: 6px;
+    --radius: 10px;
+    --radius-lg: 16px;
+    --shadow: 0 2px 12px oklch(0% 0 0 / 0.07);
+    --shadow-md: 0 4px 24px oklch(0% 0 0 / 0.1);
+    --font: 'DM Sans', sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font);
+    background: var(--bg);
+    color: var(--text);
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: white;
+    border-bottom: 2px solid var(--border);
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+    box-shadow: var(--shadow);
+  }
+
+  .nav-logo {
+    font-weight: 700;
+    font-size: 20px;
+    color: var(--text);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .nav-logo-icon {
+    width: 36px;
+    height: 36px;
+    background: var(--accent);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: var(--text-mid);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 15px;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--accent); }
+
+  .nav-phone {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--accent);
+    color: white;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 16px;
+    padding: 8px 18px;
+    border-radius: 999px;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .nav-phone:hover { background: var(--accent-dark); transform: scale(1.03); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 92vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 48px;
+    padding: 80px 64px;
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--accent-light);
+    color: var(--accent-dark);
+    font-weight: 800;
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 999px;
+    margin-bottom: 20px;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    width: 8px; height: 8px;
+    background: var(--accent);
+    border-radius: 50%;
+    display: inline-block;
+  }
+
+  .hero h1 {
+    font-size: clamp(36px, 4.5vw, 58px);
+    font-weight: 800;
+    line-height: 1.1;
+    color: var(--text);
+    margin-bottom: 20px;
+  }
+
+  .hero h1 em {
+    font-style: normal;
+    color: var(--accent);
+  }
+
+  .hero-sub {
+    font-size: 20px;
+    color: var(--text-mid);
+    font-weight: 500;
+    margin-bottom: 40px;
+    line-height: 1.5;
+    max-width: 480px;
+  }
+
+  .hero-ctas {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .phone-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    background: var(--accent);
+    color: white;
+    text-decoration: none;
+    padding: 16px 28px;
+    border-radius: var(--radius);
+    font-weight: 700;
+    font-size: 24px;
+    letter-spacing: -0.02em;
+    transition: transform 0.2s, background 0.2s, box-shadow 0.2s;
+    box-shadow: 0 6px 24px oklch(46% 0.17 148 / 0.3);
+    width: fit-content;
+  }
+
+  .phone-cta:hover {
+    transform: translateY(-2px) scale(1.02);
+    background: var(--accent-dark);
+    box-shadow: 0 10px 32px oklch(46% 0.17 148 / 0.35);
+  }
+
+  .phone-cta svg { flex-shrink: 0; }
+
+  .phone-sub {
+    font-size: 14px;
+    color: var(--text-light);
+    font-weight: 600;
+    padding-left: 4px;
+  }
+
+  .hero-badges {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 28px;
+  }
+
+  .badge {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    background: white;
+    border: 2px solid var(--border);
+    border-radius: 999px;
+    padding: 7px 16px;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text-mid);
+  }
+
+  .badge-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: #4CAF50;
+  }
+
+  /* Hero image side */
+  .hero-img-wrap {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .hero-main-photo {
+    width: 100%;
+    max-width: 480px;
+    aspect-ratio: 4/5;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    position: relative;
+    box-shadow: var(--shadow-md);
+  }
+
+  .photo-placeholder {
+    width: 100%; height: 100%;
+    background: repeating-linear-gradient(
+      45deg,
+      oklch(90% 0.01 70),
+      oklch(90% 0.01 70) 6px,
+      oklch(93% 0.01 70) 6px,
+      oklch(93% 0.01 70) 12px
+    );
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    color: var(--text-light);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-align: center;
+    padding: 24px;
+  }
+
+  .photo-label {
+    background: white;
+    border-radius: var(--radius-sm);
+    padding: 10px 18px;
+    font-size: 12px;
+    font-weight: 800;
+    color: var(--text-mid);
+    font-family: 'Courier New', monospace;
+    letter-spacing: 0.04em;
+    border: 1px solid var(--border);
+  }
+
+  .hero-float-card {
+    position: absolute;
+    background: white;
+    border-radius: var(--radius);
+    padding: 14px 18px;
+    box-shadow: var(--shadow-md);
+    border: 2px solid var(--border);
+    font-weight: 700;
+    font-size: 14px;
+  }
+
+  .float-card-1 {
+    bottom: -20px;
+    left: -28px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .float-card-2 {
+    top: 28px;
+    right: -28px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .float-stars {
+    color: var(--accent);
+    font-size: 16px;
+    letter-spacing: -2px;
+  }
+
+  /* ── SECTION WRAPPER ── */
+  section {
+    padding: 96px 24px;
+  }
+
+  .container {
+    max-width: 1160px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--accent-light);
+    color: var(--accent-dark);
+    font-weight: 800;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 5px 13px;
+    border-radius: 999px;
+    margin-bottom: 16px;
+  }
+
+  .section-title {
+    font-size: clamp(24px, 3vw, 38px);
+    font-weight: 700;
+    line-height: 1.15;
+    margin-bottom: 16px;
+  }
+
+  .section-sub {
+    font-size: 18px;
+    color: var(--text-mid);
+    font-weight: 500;
+    max-width: 540px;
+  }
+
+  /* ── ABOUT ── */
+  .about-section { background: white; }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 64px;
+    align-items: center;
+  }
+
+  .about-photo {
+    aspect-ratio: 1;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    max-width: 400px;
+    box-shadow: var(--shadow-md);
+  }
+
+  .about-content p {
+    font-size: 18px;
+    line-height: 1.7;
+    color: var(--text-mid);
+    margin-bottom: 16px;
+  }
+
+  .about-content p strong { color: var(--text); }
+
+  .about-content blockquote {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--text);
+    line-height: 1.4;
+    border-left: 4px solid var(--accent);
+    padding-left: 20px;
+    margin: 28px 0;
+  }
+
+  /* ── SERVICES ── */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 48px;
+  }
+
+  .service-card {
+    background: white;
+    border-radius: var(--radius);
+    padding: 28px 24px;
+    border: 2px solid var(--border);
+    transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+    cursor: default;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .service-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+  }
+
+  .service-icon {
+    width: 52px;
+    height: 52px;
+    background: var(--accent-light);
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+    font-size: 22px;
+  }
+
+  .service-card h3 {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  .service-card p {
+    font-size: 15px;
+    color: var(--text-mid);
+    line-height: 1.5;
+    flex: 1;
+  }
+
+  .service-price {
+    margin-top: 16px;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--accent-dark);
+    background: var(--accent-light);
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 999px;
+    align-self: flex-start;
+  }
+
+  /* ── WORK / BEFORE-AFTER ── */
+  .work-section { background: white; }
+
+  .work-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 28px;
+    margin-top: 48px;
+  }
+
+  .before-after-card {
+    border-radius: var(--radius);
+    overflow: hidden;
+    border: 2px solid var(--border);
+    background: var(--card);
+    box-shadow: var(--shadow);
+  }
+
+  .ba-slider-wrap {
+    position: relative;
+    height: 260px;
+    overflow: hidden;
+    cursor: col-resize;
+    user-select: none;
+  }
+
+  .ba-before, .ba-after {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+  }
+
+  .ba-after {
+    clip-path: inset(0 50% 0 0);
+  }
+
+  .ba-divider {
+    position: absolute;
+    top: 0; bottom: 0;
+    left: 50%;
+    width: 3px;
+    background: white;
+    transform: translateX(-50%);
+    z-index: 10;
+    pointer-events: none;
+  }
+
+  .ba-handle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 40px;
+    height: 40px;
+    transform: translate(-50%, -50%);
+    background: white;
+    border-radius: 50%;
+    z-index: 11;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    color: var(--text-mid);
+    font-size: 14px;
+    font-weight: 900;
+  }
+
+  .ba-label {
+    position: absolute;
+    bottom: 10px;
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 4px 10px;
+    border-radius: 999px;
+    pointer-events: none;
+    z-index: 9;
+  }
+
+  .ba-label.before { left: 10px; background: rgba(0,0,0,0.55); color: white; }
+  .ba-label.after { right: 10px; background: var(--accent); color: white; }
+
+  .ba-info {
+    padding: 18px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .ba-title {
+    font-weight: 800;
+    font-size: 16px;
+  }
+
+  .ba-meta {
+    font-size: 13px;
+    color: var(--text-light);
+    font-weight: 600;
+    margin-top: 2px;
+  }
+
+  .ba-check {
+    width: 34px;
+    height: 34px;
+    background: var(--accent-light);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: var(--accent-dark);
+    font-weight: 900;
+    font-size: 16px;
+  }
+
+  /* ── REVIEWS ── */
+  .reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    margin-top: 48px;
+  }
+
+  .review-bubble {
+    background: white;
+    border-radius: 10px 10px 10px 2px;
+    padding: 22px 24px;
+    border: 2px solid var(--border);
+    position: relative;
+    box-shadow: var(--shadow);
+    transition: transform 0.2s;
+  }
+
+  .review-bubble:nth-child(2) { transform: rotate(0.3deg); }
+  .review-bubble:nth-child(3) { transform: rotate(-0.25deg); }
+  .review-bubble:nth-child(4) { transform: rotate(0.4deg); }
+  .review-bubble:nth-child(5) { transform: rotate(-0.2deg); }
+  .review-bubble:hover { transform: rotate(0deg) translateY(-2px) !important; }
+
+  .review-stars {
+    color: var(--accent);
+    font-size: 18px;
+    letter-spacing: -1px;
+    margin-bottom: 10px;
+  }
+
+  .review-text {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--text);
+    font-weight: 500;
+    margin-bottom: 16px;
+  }
+
+  .review-footer {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-top: 14px;
+    border-top: 1px solid var(--border);
+  }
+
+  .review-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--accent-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 900;
+    font-size: 14px;
+    color: var(--accent-dark);
+    flex-shrink: 0;
+  }
+
+  .review-name {
+    font-weight: 800;
+    font-size: 14px;
+  }
+
+  .review-via {
+    font-size: 12px;
+    color: var(--text-light);
+    font-weight: 600;
+  }
+
+  .whatsapp-badge {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 12px;
+    font-weight: 700;
+    color: #25D366;
+  }
+
+  /* ── CONTACT ── */
+  .contact-section { background: white; }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 64px;
+    align-items: start;
+    margin-top: 48px;
+  }
+
+  .contact-left h3 {
+    font-size: 22px;
+    font-weight: 900;
+    margin-bottom: 12px;
+  }
+
+  .contact-left p {
+    font-size: 16px;
+    color: var(--text-mid);
+    line-height: 1.7;
+    margin-bottom: 28px;
+  }
+
+  .contact-phone-big {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: var(--accent);
+    color: white;
+    text-decoration: none;
+    padding: 15px 24px;
+    border-radius: var(--radius);
+    font-weight: 700;
+    font-size: 22px;
+    letter-spacing: -0.02em;
+    margin-bottom: 20px;
+    transition: background 0.2s, transform 0.15s;
+    box-shadow: 0 6px 24px oklch(46% 0.17 148 / 0.25);
+    display: inline-flex;
+  }
+
+  .contact-phone-big:hover {
+    background: var(--accent-dark);
+    transform: scale(1.02);
+  }
+
+  .contact-hours {
+    background: var(--bg);
+    border-radius: var(--radius-sm);
+    padding: 18px;
+    border: 2px solid var(--border);
+  }
+
+  .contact-hours h4 {
+    font-size: 14px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-light);
+    margin-bottom: 12px;
+  }
+
+  .hours-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 15px;
+    font-weight: 600;
+    padding: 6px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .hours-row:last-child { border: none; }
+  .hours-open { color: var(--accent-dark); font-weight: 700; }
+  .hours-closed { color: var(--text-light); }
+
+  /* ── FORM ── */
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+  }
+
+  .form-group label {
+    font-size: 14px;
+    font-weight: 800;
+    color: var(--text);
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    padding: 13px 16px;
+    border-radius: var(--radius-sm);
+    border: 2px solid var(--border);
+    font-family: var(--font);
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--text);
+    background: var(--bg);
+    transition: border-color 0.2s, box-shadow 0.2s;
+    outline: none;
+  }
+
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px oklch(68% 0.19 50 / 0.12);
+  }
+
+  .form-group textarea { resize: vertical; min-height: 110px; }
+
+  .form-submit {
+    background: var(--accent);
+    color: white;
+    border: none;
+    padding: 14px 28px;
+    border-radius: var(--radius-sm);
+    font-family: var(--font);
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+    text-align: center;
+  }
+
+  .form-submit:hover {
+    background: var(--accent-dark);
+    transform: scale(1.02);
+  }
+
+  .form-note {
+    font-size: 13px;
+    color: var(--text-light);
+    font-weight: 600;
+    text-align: center;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: oklch(18% 0.01 60);
+    color: oklch(80% 0.01 70);
+    padding: 40px 24px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  footer strong { color: white; }
+  footer a { color: var(--accent); text-decoration: none; }
+
+  /* ── TWEAKS PANEL ── */
+  #tweaks-panel {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 260px;
+    background: white;
+    border: 2px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px;
+    box-shadow: var(--shadow-md);
+    z-index: 9999;
+    font-size: 14px;
+  }
+
+  #tweaks-panel h4 {
+    font-size: 13px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-light);
+    margin-bottom: 16px;
+  }
+
+  .tweak-row {
+    margin-bottom: 14px;
+  }
+
+  .tweak-row label {
+    display: block;
+    font-weight: 700;
+    color: var(--text-mid);
+    margin-bottom: 6px;
+    font-size: 13px;
+  }
+
+  .tweak-colors {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .color-swatch {
+    width: 28px;
+    height: 28px;
+    border-radius: 8px;
+    cursor: pointer;
+    border: 3px solid transparent;
+    transition: border-color 0.2s;
+  }
+
+  .color-swatch.active { border-color: var(--text); }
+
+  .tweak-row select, .tweak-row input[type="text"] {
+    width: 100%;
+    padding: 7px 10px;
+    border: 2px solid var(--border);
+    border-radius: 8px;
+    font-family: var(--font);
+    font-size: 14px;
+    outline: none;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; padding: 48px 24px; min-height: auto; gap: 40px; }
+    .hero-img-wrap { display: none; }
+    .about-grid { grid-template-columns: 1fr; }
+    .about-photo { transform: none; max-width: 100%; }
+    .contact-grid { grid-template-columns: 1fr; }
+    nav .nav-links { display: none; }
+    .form-row { grid-template-columns: 1fr; }
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero > * { animation: fadeUp 0.6s ease both; }
+  .hero > *:nth-child(2) { animation-delay: 0.12s; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <div class="nav-logo-icon">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+      </svg>
+    </div>
+    Dave Higgins
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#work">My Work</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="tel:07700900123" class="nav-phone">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6.06 6.06l.89-.89a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7a2 2 0 0 1 1.72 2.02z"/>
+    </svg>
+    07700 900 123
+  </a>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-text">
+    <div class="hero-eyebrow">📍 Stockport & South Manchester</div>
+    <h1>Plumbing sorted. <em>No fuss,</em> fair price.</h1>
+    <p class="hero-sub">Hi, I'm Dave — local plumber with 15 years doing honest work for good people. Leaks, boilers, drains, full bathrooms. I'll pick up the phone.</p>
+    <div class="hero-ctas">
+      <a href="tel:07700900123" class="phone-cta">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6.06 6.06l.89-.89a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7a2 2 0 0 1 1.72 2.02z"/>
+        </svg>
+        07700 900 123
+      </a>
+      <span class="phone-sub">🕐 Usually answer within the hour · Evenings & weekends OK</span>
+    </div>
+    <div class="hero-badges">
+      <span class="badge"><span class="badge-dot"></span>Available this week</span>
+      <span class="badge">✅ Gas Safe Registered</span>
+      <span class="badge">🔒 Fully Insured</span>
+    </div>
+  </div>
+
+  <div class="hero-img-wrap">
+    <div class="hero-main-photo">
+      <img src="images/plumber_image.png" alt="Dave Higgins — plumber" style="width:100%;height:100%;object-fit:cover;">
+    </div>
+    <div class="hero-float-card float-card-1">
+      <div class="float-stars">★★★★★</div>
+      <div>
+        <div style="font-size:13px; font-weight:800;">4.9 / 5</div>
+        <div style="font-size:11px; color:var(--text-light); font-weight:600;">Based on 84 reviews</div>
+      </div>
+    </div>
+    <div class="hero-float-card float-card-2" style="font-size:13px;">
+      <div style="font-size:22px;">🏆</div>
+      <div>
+        <div style="font-weight:900;">Checkatrade</div>
+        <div style="color:var(--text-light); font-size:11px; font-weight:600;">Top Tradesperson 2024</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about-section" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-photo">
+        <img src="images/plumber_image.png" alt="Dave Higgins at work" style="width:100%;height:100%;object-fit:cover;display:block;">
+      </div>
+      <div class="about-content">
+        <div class="section-label">About me</div>
+        <h2 class="section-title">I'm Dave. I've been fixing things round here for 15 years.</h2>
+        <blockquote>"I answer my own phone, turn up when I say, and leave the place tidy."</blockquote>
+        <p>Self-employed since 2012, most of my work comes through recommendations — which is how I like it. I do all plumbing and heating: emergency callouts, boiler repairs, blocked drains, full bathroom fits. Gas Safe registered, fully insured.</p>
+        <p>Based in Stockport, covering Didsbury, Cheadle, and the surrounding area. Not sure if I cover you? Just ring.</p>
+        <div class="hero-badges" style="margin-top: 20px;">
+          <span class="badge">🔧 Gas Safe: 543218</span>
+          <span class="badge">🛡️ Which? Trusted Trader</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="container">
+    <div class="section-label">What I do</div>
+    <h2 class="section-title">Services</h2>
+    <p class="section-sub">Straight prices, no call-out surprises. I'll always give you a quote before I start.</p>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent-dark)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/>
+          </svg>
+        </div>
+        <h3>Leak Repairs</h3>
+        <p>Dripping taps, hidden pipe leaks, burst pipes — I'll find it and fix it fast.</p>
+        <span class="service-price">From £75</span>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent-dark)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+          </svg>
+        </div>
+        <h3>Boiler Service & Repair</h3>
+        <p>Annual servicing, fault finding, and repair. Gas Safe registered — all makes covered.</p>
+        <span class="service-price">Service from £85</span>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent-dark)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="2" y1="12" x2="22" y2="12"/>
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+          </svg>
+        </div>
+        <h3>Blocked Drains</h3>
+        <p>Sinks, toilets, outside drains. I've got the gear to clear pretty much anything.</p>
+        <span class="service-price">From £60</span>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent-dark)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="18" height="18" rx="3" ry="3"/>
+            <path d="M3 9h18M9 21V9"/>
+          </svg>
+        </div>
+        <h3>Bathroom Fitting</h3>
+        <p>Full or partial bathroom fit-outs. Happy to work alongside your tiler and decorator.</p>
+        <span class="service-price">Quote on request</span>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent-dark)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/>
+          </svg>
+        </div>
+        <h3>Radiators & Heating</h3>
+        <p>New radiators, TRV upgrades, power flushing, and full heating system work.</p>
+        <span class="service-price">From £110</span>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent-dark)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+          </svg>
+        </div>
+        <h3>Emergency Callouts</h3>
+        <p>No hot water? Water coming through the ceiling? Call me — I'll get there.</p>
+        <span class="service-price">From £95</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WORK -->
+<section class="work-section" id="work">
+  <div class="container">
+    <div class="section-label">Recent jobs</div>
+    <h2 class="section-title">My work</h2>
+    <p class="section-sub">A few recent jobs — real work, real houses.</p>
+    <div class="work-grid">
+
+      <!-- Job card 1 -->
+      <div class="before-after-card">
+        <div style="height:260px; overflow:hidden;">
+          <img src="images/case_study_1.png" alt="Kitchen plumbing job" style="width:100%;height:100%;object-fit:cover;display:block;">
+        </div>
+        <div class="ba-info">
+          <div>
+            <div class="ba-title">Burst pipe repair</div>
+            <div class="ba-meta">Cheadle · Emergency callout</div>
+          </div>
+          <div class="ba-check">✓</div>
+        </div>
+      </div>
+
+      <!-- Job card 2 -->
+      <div class="before-after-card">
+        <div style="height:260px; overflow:hidden;">
+          <img src="images/case_study_2.png" alt="Bathroom refit" style="width:100%;height:100%;object-fit:cover;display:block;">
+        </div>
+        <div class="ba-info">
+          <div>
+            <div class="ba-title">Full bathroom refit</div>
+            <div class="ba-meta">Didsbury · 2 days</div>
+          </div>
+          <div class="ba-check">✓</div>
+        </div>
+      </div>
+
+      <!-- Job card 3 -->
+      <div class="before-after-card">
+        <div style="height:260px; overflow:hidden;">
+          <img src="images/case_study_3.png" alt="Freestanding bath installation" style="width:100%;height:100%;object-fit:cover;display:block;">
+        </div>
+        <div class="ba-info">
+          <div>
+            <div class="ba-title">Drain clearance</div>
+            <div class="ba-meta">Stockport · Same day</div>
+          </div>
+          <div class="ba-check">✓</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section id="reviews">
+  <div class="container">
+    <div class="section-label">What people say</div>
+    <h2 class="section-title">Reviews</h2>
+    <p class="section-sub">Honest words from real neighbours. I don't ask for reviews — they just send them.</p>
+    <div class="reviews-grid">
+
+      <div class="review-bubble">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Dave came out the same morning I called. Fixed a leak under the kitchen sink, showed me what went wrong, and didn't charge the earth. Brilliant."</p>
+        <div class="review-footer">
+          <div class="review-avatar">SB</div>
+          <div>
+            <div class="review-name">Sarah B.</div>
+            <div class="review-via">Heaton Moor</div>
+          </div>
+          <div class="whatsapp-badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+            WhatsApp
+          </div>
+        </div>
+      </div>
+
+      <div class="review-bubble">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"My boiler packed in on a Friday night. Dave answered the phone, talked me through it, and came first thing Saturday. Sorted in an hour. Top bloke."</p>
+        <div class="review-footer">
+          <div class="review-avatar">MJ</div>
+          <div>
+            <div class="review-name">Mark J.</div>
+            <div class="review-via">Cheadle Heath</div>
+          </div>
+          <div class="whatsapp-badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+            WhatsApp
+          </div>
+        </div>
+      </div>
+
+      <div class="review-bubble">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Really honest about what needed doing and what didn't. He could've charged me for a lot more work but he didn't. Will use him again without hesitation."</p>
+        <div class="review-footer">
+          <div class="review-avatar">LT</div>
+          <div>
+            <div class="review-name">Linda T.</div>
+            <div class="review-via">Didsbury</div>
+          </div>
+          <div class="whatsapp-badge" style="color:#e00; gap:4px;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#e00"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+            Checkatrade
+          </div>
+        </div>
+      </div>
+
+      <div class="review-bubble">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Our bathroom looks completely different — it's brilliant. Dave kept us updated the whole time and left the place spotless. Highly recommend."</p>
+        <div class="review-footer">
+          <div class="review-avatar">RK</div>
+          <div>
+            <div class="review-name">Rachel K.</div>
+            <div class="review-via">Bramhall</div>
+          </div>
+          <div class="whatsapp-badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+            WhatsApp
+          </div>
+        </div>
+      </div>
+
+      <div class="review-bubble">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Unblocked our drain in 20 minutes flat. Friendly, quick, no mess. Gave us his number for next time. That's exactly what you want."</p>
+        <div class="review-footer">
+          <div class="review-avatar">PT</div>
+          <div>
+            <div class="review-name">Pete T.</div>
+            <div class="review-via">Stockport</div>
+          </div>
+          <div class="whatsapp-badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+            WhatsApp
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <div class="container">
+    <div class="section-label">Get in touch</div>
+    <h2 class="section-title">Book a job</h2>
+    <div class="contact-grid">
+      <div class="contact-left">
+        <h3>The easiest way? Just ring.</h3>
+        <p>I answer my own phone. If I'm under someone's floorboards and can't pick up, I'll call you back within the hour — usually sooner.</p>
+        <a href="tel:07700900123" class="contact-phone-big">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6.06 6.06l.89-.89a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7a2 2 0 0 1 1.72 2.02z"/>
+          </svg>
+          07700 900 123
+        </a>
+        <div class="contact-hours">
+          <h4>When I'm available</h4>
+          <div class="hours-row"><span>Mon – Fri</span><span class="hours-open">7am – 7pm</span></div>
+          <div class="hours-row"><span>Saturday</span><span class="hours-open">8am – 5pm</span></div>
+          <div class="hours-row"><span>Sunday</span><span class="hours-open">Emergencies only</span></div>
+          <div class="hours-row"><span>Bank Holidays</span><span class="hours-open">Usually available</span></div>
+        </div>
+      </div>
+
+      <div>
+        <form class="contact-form" onsubmit="handleSubmit(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">Your name</label>
+              <input type="text" id="name" placeholder="Jane Smith" required>
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone number</label>
+              <input type="tel" id="phone" placeholder="07700 000 000" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="job">What's the job?</label>
+            <select id="job">
+              <option value="">Choose a service...</option>
+              <option>Leak repair</option>
+              <option>Blocked drain</option>
+              <option>Boiler service / repair</option>
+              <option>Bathroom fitting</option>
+              <option>Radiator / heating</option>
+              <option>Emergency callout</option>
+              <option>Something else</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message">Tell me a bit more (optional)</label>
+            <textarea id="message" placeholder="e.g. dripping tap in the kitchen, been going for a week..."></textarea>
+          </div>
+          <button type="submit" class="form-submit">Send message →</button>
+          <p class="form-note">I'll get back to you within a few hours. Or just ring — it's quicker.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p style="margin-bottom:8px;"><strong>Dave Higgins Plumbing & Heating</strong> · Stockport, SK4</p>
+  <p style="margin-bottom:12px;">Gas Safe No. 543218 · Fully insured · Which? Trusted Trader</p>
+  <p><a href="tel:07700900123">07700 900 123</a> · <a href="mailto:dave@davehigginsplumbing.co.uk">dave@davehigginsplumbing.co.uk</a></p>
+  <p style="margin-top:16px; font-size:12px; opacity:0.5;">© 2025 Dave Higgins Plumbing & Heating. All rights reserved.</p>
+</footer>
+
+<!-- TWEAKS PANEL -->
+<div id="tweaks-panel">
+  <h4>Tweaks</h4>
+  <div class="tweak-row">
+    <label>Accent colour</label>
+    <div class="tweak-colors">
+      <div class="color-swatch" style="background:oklch(68% 0.19 50)" title="Amber" onclick="setAccent(this, 'oklch(68% 0.19 50)', 'oklch(92% 0.06 65)', 'oklch(52% 0.19 50)')"></div>
+      <div class="color-swatch" style="background:oklch(55% 0.19 230)" title="Blue" onclick="setAccent(this, 'oklch(55% 0.19 230)', 'oklch(94% 0.05 230)', 'oklch(42% 0.19 230)')"></div>
+      <div class="color-swatch active" style="background:oklch(46% 0.17 148)" title="Green" onclick="setAccent(this, 'oklch(46% 0.17 148)', 'oklch(94% 0.05 148)', 'oklch(35% 0.15 148)')"></div>
+      <div class="color-swatch" style="background:oklch(55% 0.19 0)" title="Red" onclick="setAccent(this, 'oklch(55% 0.19 0)', 'oklch(93% 0.06 20)', 'oklch(42% 0.19 0)')"></div>
+    </div>
+  </div>
+  <div class="tweak-row">
+    <label>Tradesperson name</label>
+    <input type="text" value="Dave Higgins" oninput="setName(this.value)" placeholder="Name">
+  </div>
+  <div class="tweak-row">
+    <label>Phone number</label>
+    <input type="text" value="07700 900 123" oninput="setPhone(this.value)" placeholder="Phone">
+  </div>
+  <div class="tweak-row">
+    <label>Location</label>
+    <input type="text" value="Stockport & South Manchester" oninput="setLocation(this.value)" placeholder="Location">
+  </div>
+</div>
+
+<script>
+
+
+  // ── FORM SUBMIT ──
+  function handleSubmit(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('.form-submit');
+    btn.textContent = '✓ Message sent! I\'ll be in touch.';
+    btn.style.background = 'oklch(45% 0.15 145)';
+    btn.disabled = true;
+  }
+
+  // ── TWEAKS ──
+  const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+    "accentColor": "oklch(46% 0.17 148)",
+    "accentLight": "oklch(94% 0.05 148)",
+    "accentDark": "oklch(35% 0.15 148)",
+    "traderName": "Dave Higgins",
+    "phone": "07700 900 123",
+    "location": "Stockport & South Manchester"
+  }/*EDITMODE-END*/;
+
+  function setAccent(el, main, light, dark) {
+    document.querySelectorAll('.color-swatch').forEach(s => s.classList.remove('active'));
+    el.classList.add('active');
+    document.documentElement.style.setProperty('--accent', main);
+    document.documentElement.style.setProperty('--accent-light', light);
+    document.documentElement.style.setProperty('--accent-dark', dark);
+    window.parent.postMessage({ type: '__edit_mode_set_keys', edits: { accentColor: main, accentLight: light, accentDark: dark } }, '*');
+  }
+
+  function setName(v) {
+    document.querySelectorAll('.nav-logo').forEach(el => el.childNodes[el.childNodes.length - 1].textContent = ' ' + v);
+    window.parent.postMessage({ type: '__edit_mode_set_keys', edits: { traderName: v } }, '*');
+  }
+
+  function setPhone(v) {
+    document.querySelectorAll('a[href^="tel"]').forEach(el => {
+      el.href = 'tel:' + v.replace(/\s/g, '');
+      if (el.textContent.trim().match(/^[\d\s]+$/)) el.textContent = v;
+    });
+    window.parent.postMessage({ type: '__edit_mode_set_keys', edits: { phone: v } }, '*');
+  }
+
+  function setLocation(v) {
+    const eyebrow = document.querySelector('.hero-eyebrow');
+    if (eyebrow) eyebrow.innerHTML = '📍 ' + v;
+    window.parent.postMessage({ type: '__edit_mode_set_keys', edits: { location: v } }, '*');
+  }
+
+  // Apply saved defaults
+  if (TWEAK_DEFAULTS.accentColor) {
+    document.documentElement.style.setProperty('--accent', TWEAK_DEFAULTS.accentColor);
+    document.documentElement.style.setProperty('--accent-light', TWEAK_DEFAULTS.accentLight);
+    document.documentElement.style.setProperty('--accent-dark', TWEAK_DEFAULTS.accentDark);
+  }
+
+  // Tweaks panel toggle
+  window.addEventListener('message', e => {
+    if (e.data?.type === '__activate_edit_mode') document.getElementById('tweaks-panel').style.display = 'block';
+    if (e.data?.type === '__deactivate_edit_mode') document.getElementById('tweaks-panel').style.display = 'none';
+  });
+  window.parent.postMessage({ type: '__edit_mode_available' }, '*');
+
+  // ── SCROLL REVEAL ──
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.service-card, .review-bubble, .before-after-card').forEach((el, i) => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = `opacity 0.5s ${i * 0.07}s ease, transform 0.5s ${i * 0.07}s ease`;
+    observer.observe(el);
+  });
+</script>
+
+</body>
+</html>

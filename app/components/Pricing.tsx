@@ -11,7 +11,7 @@ const includes = [
 
 export default function Pricing({ onContact }: { onContact: () => void }) {
   return (
-    <section id="pricing" style={{ padding: '96px 32px' }}>
+    <section id="pricing" className="px-4 md:px-8" style={{ paddingTop: 96, paddingBottom: 96 }}>
       <div className="max-w-[1100px] mx-auto flex gap-20 items-start flex-wrap">
         <div className="flex-1 min-w-[280px]">
           <div style={{ fontSize: 12, fontWeight: 500, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--color-muted)', marginBottom: 16 }}>
@@ -21,14 +21,13 @@ export default function Pricing({ onContact }: { onContact: () => void }) {
             One price.<br />No surprises.
           </h2>
           <p style={{ fontSize: 17, color: 'var(--color-ink-3)', lineHeight: 1.65, maxWidth: 380 }}>
-            Most jobs come in at £600–£800. If yours is simpler or more involved, I'll tell you upfront. There are no monthly fees — ever.
+            A single flat fee of £650. If your job needs something extra I'll tell you upfront — but there are no monthly fees, ever.
           </p>
         </div>
 
-        <div style={{ background: 'var(--color-surface)', border: '1px solid var(--color-border)', borderRadius: 'var(--radius-card)', padding: '36px 32px', boxShadow: 'var(--shadow-card-lg)', minWidth: 420, flexShrink: 0 }}>
+        <div style={{ background: 'var(--color-surface)', border: '1px solid var(--color-border)', borderRadius: 'var(--radius-card)', padding: '36px 32px', boxShadow: 'var(--shadow-card-lg)', width: '100%', maxWidth: 480, flexShrink: 0 }}>
           <div style={{ fontFamily: 'var(--font-display)', fontSize: 56, fontWeight: 500, color: 'var(--color-ink)', lineHeight: 1 }}>
-            <sup style={{ fontSize: 24, verticalAlign: 'super' }}>£</sup>600
-            <span style={{ fontSize: 20, color: 'var(--color-muted)', fontFamily: 'var(--font-body)', fontWeight: 400 }}> – £800</span>
+            <sup style={{ fontSize: 24, verticalAlign: 'super' }}>£</sup>650
           </div>
           <div style={{ fontSize: 14, color: 'var(--color-muted)', marginTop: 6, marginBottom: 28 }}>
             One-time. No monthly fees. No surprises.
