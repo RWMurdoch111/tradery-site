@@ -12,7 +12,7 @@ export default function About() {
             <img
               src="/robbie.png"
               alt="Robbie Murdoch"
-              style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top', display: 'block' }}
+              style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 35%', display: 'block' }}
               onError={e => { (e.currentTarget as HTMLImageElement).style.display = 'none' }}
             />
           </div>
