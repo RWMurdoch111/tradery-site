@@ -1,3 +1,11 @@
+'use client'
+
+import { useEffect, useRef } from 'react'
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+
+gsap.registerPlugin(ScrollTrigger)
+
 const templates = [
   {
     tier: 'Premium',
@@ -11,35 +19,57 @@ const templates = [
     tier: 'Standard',
     name: 'Friendly local trader',
     desc: 'Warm, approachable, straight-talking. Built for the trusted local who wants a site that feels like them — not like a big company.',
-    accent: '#2563eb',
+    accent: 'oklch(46% 0.17 148)',
     href: '/demos/plumber-standard/index.html',
     live: true,
   },
   {
     tier: 'Essential',
     name: 'Simple & clean',
-    desc: 'No frills, fast, professional. One page, clear services, phone number front and centre. Gets the job done.',
-    accent: '#16a34a',
-    href: '#',
-    live: false,
+    desc: 'Crisp white, vibrant blue. Services, reviews, and a lead-capture form designed to turn visitors into bookings.',
+    accent: '#1A6EF5',
+    href: '/demos/plumber-essential/index.html',
+    live: true,
   },
 ]
 
 export default function Examples() {
+  const sectionRef = useRef<HTMLElement>(null)
+  const headingRef = useRef<HTMLHeadingElement>(null)
+  const cardsRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.from(headingRef.current, {
+        opacity: 0, y: 20, duration: 0.55, ease: 'power2.out',
+        scrollTrigger: { trigger: headingRef.current, start: 'top 85%' },
+      })
+
+      if (cardsRef.current) {
+        gsap.from(cardsRef.current.children, {
+          opacity: 0, y: 32, duration: 0.55, ease: 'power2.out', stagger: 0.12,
+          scrollTrigger: { trigger: cardsRef.current, start: 'top 82%' },
+        })
+      }
+    }, sectionRef)
+
+    return () => ctx.revert()
+  }, [])
+
   return (
-    <section id="examples" className="px-4 md:px-8" style={{ paddingTop: 96, paddingBottom: 96 }}>
+    <section ref={sectionRef} id="examples" className="px-4 md:px-8" style={{ paddingTop: 96, paddingBottom: 96 }}>
       <div className="max-w-[1100px] mx-auto">
         <div style={{ fontSize: 12, fontWeight: 500, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--color-muted)', marginBottom: 16 }}>
           Examples
         </div>
-        <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(28px, 3.5vw, 42px)', fontWeight: 500, color: 'var(--color-ink)', marginBottom: 12, lineHeight: 1.2 }}>
-          Three styles.<br />Pick the right fit.
+        <h2 ref={headingRef} style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(28px, 3.5vw, 42px)', fontWeight: 500, color: 'var(--color-ink)', marginBottom: 12, lineHeight: 1.2 }}>
+          A few of my<br />recent builds.
         </h2>
-        <p style={{ fontSize: 17, color: 'var(--color-ink-3)', lineHeight: 1.65, maxWidth: 420, marginBottom: 56 }}>
-          Every site is built to one of these templates then fully personalised with your details, photos, and copy.
+        <p style={{ fontSize: 17, color: 'var(--color-ink-3)', lineHeight: 1.65, maxWidth: 480, marginBottom: 56 }}>
+          A flavour of what's possible. Every site is custom-built — if you've got something different in mind, I'll build that too.
         </p>
 
-        <div className="grid gap-5" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))' }}>
+        <div ref={cardsRef} className="grid gap-5" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))' }}>
           {templates.map((t) => (
             <div
               key={t.tier}

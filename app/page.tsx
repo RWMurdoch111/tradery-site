@@ -2,9 +2,7 @@
 import { useState } from 'react'
 import Header from './components/Header'
 import Hero from './components/Hero'
-import HowItWorks from './components/HowItWorks'
-import VideoExplainer from './components/VideoExplainer'
-import SocialProof from './components/SocialProof'
+import HowItWorksAnimation from './components/HowItWorksAnimation'
 import Pricing from './components/Pricing'
 import Examples from './components/Examples'
 import About from './components/About'
@@ -19,9 +17,7 @@ export default function Home() {
       <Header onContact={() => setShowContact(true)} />
       <main>
         <Hero onContact={() => setShowContact(true)} />
-        <VideoExplainer />
-        <HowItWorks />
-        <SocialProof />
+        <HowItWorksAnimation />
         <Examples />
         <Pricing onContact={() => setShowContact(true)} />
         <About />

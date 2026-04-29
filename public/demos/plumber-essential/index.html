@@ -1,0 +1,1274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Clearflow Plumbing — London</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ── Tokens ──────────────────────────────────────────────────── */
+    :root {
+      --white:        #FFFFFF;
+      --off-white:    #F7F8FA;
+      --border:       #E4E8EE;
+      --text:         #111827;
+      --text-2:       #6B7280;
+      --text-3:       #9CA3AF;
+      --blue:         #1A6EF5;
+      --blue-light:   #E8F0FE;
+      --blue-mid:     #3B82F6;
+      --blue-deep:    #1040B0;
+      --blue-wash:    #F0F5FF;
+      --radius-sm:    8px;
+      --radius-md:    14px;
+      --radius-lg:    20px;
+      --radius-xl:    28px;
+      --font:         "Space Grotesk", sans-serif;
+      --ease:         cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font);
+      background: var(--white);
+      color: var(--text);
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.6;
+    }
+
+    /* ── Nav ─────────────────────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 40px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .nav-logo-mark {
+      width: 34px;
+      height: 34px;
+      background: var(--blue);
+      border-radius: 9px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .nav-logo-mark svg { display: block; }
+
+    .nav-logo-name {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text);
+      letter-spacing: -0.3px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-2);
+      text-decoration: none;
+      transition: color 150ms var(--ease);
+    }
+
+    .nav-links a:hover { color: var(--text); }
+
+    .nav-cta {
+      background: var(--blue);
+      color: var(--white) !important;
+      padding: 8px 20px;
+      border-radius: var(--radius-sm);
+      font-size: 14px !important;
+      font-weight: 600 !important;
+      transition: background 150ms var(--ease) !important;
+    }
+
+    .nav-cta:hover { background: var(--blue-deep) !important; color: var(--white) !important; }
+
+    /* ── Hero ─────────────────────────────────────────────────────── */
+    #hero {
+      padding-top: 64px;
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 60px;
+      max-width: 1160px;
+      margin: 0 auto;
+      padding-left: 40px;
+      padding-right: 40px;
+    }
+
+    .hero-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--blue-light);
+      color: var(--blue);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      padding: 6px 12px;
+      border-radius: var(--radius-full, 9999px);
+      margin-bottom: 24px;
+    }
+
+    .hero-label span { width: 6px; height: 6px; background: var(--blue); border-radius: 50%; display: block; }
+
+    .hero-title {
+      font-size: clamp(40px, 5vw, 64px);
+      font-weight: 700;
+      line-height: 1.08;
+      letter-spacing: -1.5px;
+      color: var(--text);
+      margin-bottom: 20px;
+    }
+
+    .hero-title em {
+      font-style: normal;
+      color: var(--blue);
+    }
+
+    .hero-sub {
+      font-size: 18px;
+      font-weight: 400;
+      color: var(--text-2);
+      line-height: 1.65;
+      margin-bottom: 36px;
+      max-width: 440px;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--blue);
+      color: var(--white);
+      font-family: var(--font);
+      font-size: 15px;
+      font-weight: 600;
+      padding: 14px 28px;
+      border: none;
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: background 150ms var(--ease), transform 100ms var(--ease);
+    }
+
+    .btn-primary:hover { background: var(--blue-deep); transform: translateY(-1px); }
+    .btn-primary:active { transform: translateY(0); }
+
+    .btn-ghost {
+      font-family: var(--font);
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--text-2);
+      background: none;
+      border: 1.5px solid var(--border);
+      padding: 13px 24px;
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: border-color 150ms var(--ease), color 150ms var(--ease);
+    }
+
+    .btn-ghost:hover { border-color: var(--text-2); color: var(--text); }
+
+    .hero-trust {
+      margin-top: 40px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .trust-avatars {
+      display: flex;
+    }
+
+    .trust-avatars .av {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      border: 2px solid var(--white);
+      margin-left: -10px;
+      font-size: 13px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--white);
+    }
+
+    .trust-avatars .av:first-child { margin-left: 0; }
+
+    .trust-text { font-size: 13px; color: var(--text-2); }
+    .trust-text strong { color: var(--text); font-weight: 600; }
+
+    .stars { color: #F59E0B; font-size: 13px; display: block; margin-bottom: 2px; }
+
+    /* Hero visual */
+    .hero-visual {
+      position: relative;
+    }
+
+    .hero-img-wrap {
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      aspect-ratio: 4/5;
+      background: var(--blue-light);
+      position: relative;
+    }
+
+    .hero-img-placeholder {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(145deg, #DBEAFE 0%, #BFDBFE 40%, #93C5FD 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-img-placeholder svg { opacity: 0.35; }
+
+    /* Floating stat cards */
+    .stat-card {
+      position: absolute;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 14px 18px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+    }
+
+    .stat-card.sc-1 { bottom: -20px; left: -28px; }
+    .stat-card.sc-2 { top: 40px; right: -28px; }
+
+    .stat-num {
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -0.5px;
+      line-height: 1;
+    }
+
+    .stat-label { font-size: 12px; color: var(--text-2); margin-top: 3px; }
+
+    /* ── Section shell ────────────────────────────────────────────── */
+    section { padding: 100px 40px; }
+
+    .section-inner {
+      max-width: 1160px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-size: clamp(28px, 3.5vw, 44px);
+      font-weight: 700;
+      letter-spacing: -1px;
+      line-height: 1.1;
+      color: var(--text);
+      margin-bottom: 16px;
+    }
+
+    .section-sub {
+      font-size: 16px;
+      color: var(--text-2);
+      line-height: 1.65;
+      max-width: 540px;
+    }
+
+    .section-head { margin-bottom: 56px; }
+
+    /* ── Services ─────────────────────────────────────────────────── */
+    #services { background: var(--off-white); }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .service-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      transition: box-shadow 200ms var(--ease), transform 200ms var(--ease);
+    }
+
+    .service-card:hover {
+      box-shadow: 0 8px 32px rgba(26,110,245,0.10);
+      transform: translateY(-2px);
+    }
+
+    .service-icon {
+      width: 48px;
+      height: 48px;
+      background: var(--blue-wash);
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 18px;
+    }
+
+    .service-icon svg { color: var(--blue); }
+
+    .service-name {
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+
+    .service-desc {
+      font-size: 14px;
+      color: var(--text-2);
+      line-height: 1.6;
+    }
+
+    /* ── Work ─────────────────────────────────────────────────────── */
+    #work { background: var(--white); }
+
+    .work-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: auto auto;
+      gap: 16px;
+    }
+
+    .work-card {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .work-card.featured {
+      grid-column: 1 / 2;
+      grid-row: 1 / 3;
+    }
+
+    .work-card .img {
+      width: 100%;
+      height: 100%;
+      min-height: 220px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 36px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .work-card.featured .img { min-height: 460px; }
+
+    .work-card .overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(10,20,50,0.65) 0%, transparent 55%);
+      opacity: 0;
+      transition: opacity 250ms var(--ease);
+    }
+
+    .work-card:hover .overlay { opacity: 1; }
+
+    .work-card .tag {
+      position: absolute;
+      bottom: 16px;
+      left: 16px;
+      background: var(--white);
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text);
+      padding: 5px 12px;
+      border-radius: var(--radius-full, 9999px);
+      opacity: 0;
+      transform: translateY(6px);
+      transition: opacity 250ms var(--ease), transform 250ms var(--ease);
+    }
+
+    .work-card:hover .tag { opacity: 1; transform: translateY(0); }
+
+    /* Work card colour palettes */
+    .wc-a { background: #DBEAFE; }
+    .wc-b { background: #E0F2FE; }
+    .wc-c { background: #EDE9FE; }
+    .wc-d { background: #FEF3C7; }
+    .wc-e { background: #DCFCE7; }
+
+    /* placeholder pipe illustration */
+    .pipe-icon {
+      opacity: 0.28;
+    }
+
+    /* ── Reviews ──────────────────────────────────────────────────── */
+    #reviews { background: var(--off-white); }
+
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .review-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+    }
+
+    .review-stars {
+      color: #F59E0B;
+      font-size: 15px;
+      margin-bottom: 14px;
+      letter-spacing: 1px;
+    }
+
+    .review-quote {
+      font-size: 15px;
+      color: var(--text);
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+
+    .review-author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .review-av {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      font-size: 14px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--white);
+      flex-shrink: 0;
+    }
+
+    .review-name { font-size: 14px; font-weight: 600; color: var(--text); }
+    .review-location { font-size: 12px; color: var(--text-3); }
+
+    /* ── CTA / Form ───────────────────────────────────────────────── */
+    #contact {
+      background: var(--white);
+      padding: 100px 40px;
+    }
+
+    .contact-inner {
+      max-width: 1160px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .contact-left {}
+
+    .contact-perks {
+      margin-top: 36px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .perk {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+    }
+
+    .perk-icon {
+      width: 36px;
+      height: 36px;
+      background: var(--blue-wash);
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .perk-text {}
+    .perk-title { font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: 2px; }
+    .perk-desc { font-size: 13px; color: var(--text-2); }
+
+    /* Form */
+    .form-card {
+      background: var(--off-white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      padding: 40px;
+    }
+
+    .form-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -0.3px;
+      margin-bottom: 6px;
+    }
+
+    .form-sub {
+      font-size: 14px;
+      color: var(--text-2);
+      margin-bottom: 28px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 14px;
+    }
+
+    .field.full { grid-column: 1 / -1; }
+
+    label {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text);
+    }
+
+    input, textarea, select {
+      font-family: var(--font);
+      font-size: 14px;
+      color: var(--text);
+      background: var(--white);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 12px 14px;
+      outline: none;
+      transition: border-color 150ms var(--ease), box-shadow 150ms var(--ease);
+      width: 100%;
+      -webkit-appearance: none;
+    }
+
+    input::placeholder, textarea::placeholder { color: var(--text-3); }
+
+    input:focus, textarea:focus, select:focus {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 3px rgba(26,110,245,0.12);
+    }
+
+    textarea { resize: vertical; min-height: 100px; }
+
+    select { cursor: pointer; }
+
+    .submit-btn {
+      width: 100%;
+      background: var(--blue);
+      color: var(--white);
+      font-family: var(--font);
+      font-size: 15px;
+      font-weight: 600;
+      padding: 15px;
+      border: none;
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      margin-top: 8px;
+      transition: background 150ms var(--ease), transform 100ms var(--ease);
+    }
+
+    .submit-btn:hover { background: var(--blue-deep); transform: translateY(-1px); }
+    .submit-btn:active { transform: translateY(0); }
+
+    .form-note {
+      font-size: 12px;
+      color: var(--text-3);
+      text-align: center;
+      margin-top: 12px;
+    }
+
+    /* Success state */
+    .success-msg {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 40px 20px;
+      gap: 16px;
+    }
+
+    .success-msg.visible { display: flex; }
+
+    .success-icon {
+      width: 60px;
+      height: 60px;
+      background: #DCFCE7;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .success-title { font-size: 20px; font-weight: 700; color: var(--text); }
+    .success-body { font-size: 15px; color: var(--text-2); max-width: 300px; }
+
+    /* ── Footer ───────────────────────────────────────────────────── */
+    footer {
+      background: var(--text);
+      color: var(--white);
+      padding: 48px 40px;
+    }
+
+    .footer-inner {
+      max-width: 1160px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .footer-logo-mark {
+      width: 32px;
+      height: 32px;
+      background: var(--blue);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .footer-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .footer-brand-name { font-size: 15px; font-weight: 600; color: var(--white); }
+
+    .footer-info { font-size: 13px; color: rgba(255,255,255,0.45); }
+
+    .footer-contact {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 4px;
+    }
+
+    .footer-phone { font-size: 20px; font-weight: 700; color: var(--white); letter-spacing: -0.4px; }
+    .footer-email { font-size: 13px; color: rgba(255,255,255,0.5); }
+
+    /* ── Responsive ───────────────────────────────────────────────── */
+    @media (max-width: 900px) {
+      nav { padding: 0 20px; }
+      .nav-links { display: none; }
+
+      #hero {
+        grid-template-columns: 1fr;
+        padding: 40px 20px 60px;
+        gap: 48px;
+        min-height: unset;
+        padding-top: 100px;
+      }
+
+      .hero-visual { display: none; }
+
+      section { padding: 72px 20px; }
+      #contact { padding: 72px 20px; }
+
+      .services-grid { grid-template-columns: 1fr; }
+      .work-grid { grid-template-columns: 1fr 1fr; }
+      .work-card.featured { grid-column: 1 / -1; grid-row: auto; }
+      .reviews-grid { grid-template-columns: 1fr; }
+      .contact-inner { grid-template-columns: 1fr; gap: 48px; }
+      .form-row { grid-template-columns: 1fr; }
+
+      footer { padding: 36px 20px; }
+      .footer-inner { flex-direction: column; align-items: flex-start; }
+      .footer-contact { align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── Navigation ───────────────────────────────────────────────── -->
+  <nav>
+    <a href="#hero" class="nav-logo">
+      <div class="nav-logo-mark">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+          <path d="M9 2C9 2 4 5 4 10.5C4 13.5 6.2 16 9 16C11.8 16 14 13.5 14 10.5C14 5 9 2 9 2Z" fill="white" opacity="0.9"/>
+          <path d="M9 7V13M6.5 10.5H11.5" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <span class="nav-logo-name">Clearflow</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#work">Our Work</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#contact" class="nav-cta">Get a Quote</a></li>
+    </ul>
+  </nav>
+
+  <!-- ── Hero ─────────────────────────────────────────────────────── -->
+  <section id="hero" style="padding-top: 64px;">
+    <div>
+      <div class="hero-label">
+        <span></span>
+        Serving London since 2009
+      </div>
+      <h1 class="hero-title">
+        London's most<br/><em>trusted plumber.</em>
+      </h1>
+      <p class="hero-sub">
+        Fast, reliable plumbing across all London boroughs. Boilers, bathrooms, leaks, and emergency call-outs — handled properly, first time.
+      </p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn-primary">Get a free quote</a>
+        <a href="tel:02071234567" class="btn-ghost">Call 020 7123 4567</a>
+      </div>
+      <div class="hero-trust">
+        <div class="trust-avatars">
+          <div class="av" style="background:#4C8EF7;">SJ</div>
+          <div class="av" style="background:#6366F1;">MT</div>
+          <div class="av" style="background:#0EA5E9;">RB</div>
+          <div class="av" style="background:#3B82F6;">LP</div>
+        </div>
+        <div class="trust-text">
+          <span class="stars">★★★★★</span>
+          <strong>4.9 / 5</strong> from 312 London reviews
+        </div>
+      </div>
+    </div>
+
+    <!-- Visual -->
+    <div class="hero-visual">
+      <div class="hero-img-wrap">
+        <div class="hero-img-placeholder">
+          <svg class="pipe-icon" width="180" height="180" viewBox="0 0 180 180" fill="none">
+            <rect x="20" y="76" width="140" height="28" rx="6" fill="#1A6EF5"/>
+            <rect x="76" y="20" width="28" height="140" rx="6" fill="#1A6EF5"/>
+            <circle cx="90" cy="90" r="22" fill="white"/>
+            <circle cx="90" cy="90" r="14" fill="#1A6EF5"/>
+            <rect x="54" y="76" width="72" height="28" rx="0" fill="#1A6EF5"/>
+            <rect x="76" y="54" width="28" height="72" rx="0" fill="#1A6EF5"/>
+          </svg>
+        </div>
+      </div>
+
+      <div class="stat-card sc-1">
+        <div class="stat-num">15+</div>
+        <div class="stat-label">Years in London</div>
+      </div>
+
+      <div class="stat-card sc-2">
+        <div class="stat-num" style="color:var(--blue);">1hr</div>
+        <div class="stat-label">Emergency response</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Services ─────────────────────────────────────────────────── -->
+  <section id="services">
+    <div class="section-inner">
+      <div class="section-head">
+        <div class="section-label">What We Do</div>
+        <h2 class="section-title">Every job, done right.</h2>
+        <p class="section-sub">From a dripping tap to a full bathroom fit-out — we cover the lot, with fully qualified engineers on every job.</p>
+      </div>
+
+      <div class="services-grid">
+        <!-- Boilers -->
+        <div class="service-card">
+          <div class="service-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="color:var(--blue)">
+              <rect x="4" y="3" width="16" height="18" rx="3"/>
+              <circle cx="12" cy="12" r="3"/>
+              <path d="M12 9V7M12 17v-2M9 12H7M17 12h-2"/>
+            </svg>
+          </div>
+          <div class="service-name">Boiler Installation & Repair</div>
+          <div class="service-desc">Gas Safe registered engineers. New installs, annual servicing, and fault diagnosis — same-day where possible.</div>
+        </div>
+
+        <!-- Bathrooms -->
+        <div class="service-card">
+          <div class="service-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="color:var(--blue)">
+              <path d="M4 12h16v4a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4v-4Z"/>
+              <path d="M4 12V6a2 2 0 0 1 2-2h1a1 1 0 0 1 1 1v1"/>
+              <path d="M7 12V8"/>
+            </svg>
+          </div>
+          <div class="service-name">Bathroom Fitting</div>
+          <div class="service-desc">Complete bathroom installations and refits. We supply and fit, or work with your own materials.</div>
+        </div>
+
+        <!-- Emergency -->
+        <div class="service-card">
+          <div class="service-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="color:var(--blue)">
+              <path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/>
+            </svg>
+          </div>
+          <div class="service-name">Emergency Call-Out</div>
+          <div class="service-desc">Burst pipes, major leaks, boiler breakdowns. Available 24/7 across all London boroughs.</div>
+        </div>
+
+        <!-- Leaks -->
+        <div class="service-card">
+          <div class="service-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="color:var(--blue)">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" opacity="0.3"/>
+              <path d="M12 6v6l4 2"/>
+            </svg>
+          </div>
+          <div class="service-name">Leak Detection & Repair</div>
+          <div class="service-desc">Trace and fix hidden leaks without unnecessary damage to your property. No-mess, no-fuss.</div>
+        </div>
+
+        <!-- Central heating -->
+        <div class="service-card">
+          <div class="service-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="color:var(--blue)">
+              <path d="M4 6h16M4 12h16M4 18h16"/>
+              <path d="M8 3v18M16 3v18"/>
+            </svg>
+          </div>
+          <div class="service-name">Central Heating</div>
+          <div class="service-desc">Radiator installation, power flushing, TRV upgrades, and full system balancing.</div>
+        </div>
+
+        <!-- Kitchens -->
+        <div class="service-card">
+          <div class="service-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="color:var(--blue)">
+              <path d="M6 2v6a2 2 0 0 0 2 2h1v12h2V10h1a2 2 0 0 0 2-2V2M12 2v20"/>
+            </svg>
+          </div>
+          <div class="service-name">Kitchen Plumbing</div>
+          <div class="service-desc">Sink and tap installation, dishwasher and washing machine connections, and waste pipework.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Work ──────────────────────────────────────────────────────── -->
+  <section id="work">
+    <div class="section-inner">
+      <div class="section-head">
+        <div class="section-label">Previous Work</div>
+        <h2 class="section-title">Results speak for themselves.</h2>
+        <p class="section-sub">A selection of recent jobs across London — from quick fixes to complete bathroom transformations.</p>
+      </div>
+
+      <div class="work-grid">
+        <div class="work-card featured">
+          <div class="img wc-a" style="min-height:460px;">
+            <svg class="pipe-icon" width="120" height="120" viewBox="0 0 80 80" fill="none">
+              <rect x="10" y="34" width="60" height="12" rx="3" fill="#1A6EF5"/>
+              <rect x="34" y="10" width="12" height="60" rx="3" fill="#1A6EF5"/>
+              <circle cx="40" cy="40" r="8" fill="white"/>
+            </svg>
+          </div>
+          <div class="overlay"></div>
+          <div class="tag">Full bathroom refit — Islington</div>
+        </div>
+
+        <div class="work-card">
+          <div class="img wc-b" style="min-height:220px;">
+            <svg class="pipe-icon" width="80" height="80" viewBox="0 0 80 80" fill="none">
+              <rect x="20" y="30" width="40" height="20" rx="4" fill="#1A6EF5"/>
+              <rect x="35" y="15" width="10" height="25" rx="2" fill="#1A6EF5"/>
+            </svg>
+          </div>
+          <div class="overlay"></div>
+          <div class="tag">Boiler replacement — Hackney</div>
+        </div>
+
+        <div class="work-card">
+          <div class="img wc-c" style="min-height:220px;">
+            <svg class="pipe-icon" width="80" height="80" viewBox="0 0 80 80" fill="none">
+              <circle cx="40" cy="40" r="20" fill="#1A6EF5"/>
+              <circle cx="40" cy="40" r="10" fill="white"/>
+              <rect x="38" y="10" width="4" height="20" rx="2" fill="#1A6EF5"/>
+            </svg>
+          </div>
+          <div class="overlay"></div>
+          <div class="tag">Leak fix — Chelsea</div>
+        </div>
+
+        <div class="work-card">
+          <div class="img wc-d" style="min-height:220px;">
+            <svg class="pipe-icon" width="80" height="80" viewBox="0 0 80 80" fill="none">
+              <rect x="10" y="38" width="60" height="10" rx="3" fill="#1A6EF5"/>
+              <rect x="25" y="20" width="10" height="30" rx="3" fill="#1A6EF5"/>
+              <rect x="45" y="25" width="10" height="25" rx="3" fill="#1A6EF5"/>
+            </svg>
+          </div>
+          <div class="overlay"></div>
+          <div class="tag">Central heating — Clapham</div>
+        </div>
+
+        <div class="work-card">
+          <div class="img wc-e" style="min-height:220px;">
+            <svg class="pipe-icon" width="80" height="80" viewBox="0 0 80 80" fill="none">
+              <path d="M15 55 Q40 20 65 55" stroke="#1A6EF5" stroke-width="8" fill="none" stroke-linecap="round"/>
+              <circle cx="40" cy="38" r="8" fill="#1A6EF5"/>
+            </svg>
+          </div>
+          <div class="overlay"></div>
+          <div class="tag">Bathroom remodel — Fulham</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Reviews ───────────────────────────────────────────────────── -->
+  <section id="reviews">
+    <div class="section-inner">
+      <div class="section-head">
+        <div class="section-label">Reviews</div>
+        <h2 class="section-title">What our clients say.</h2>
+        <p class="section-sub">Over 300 five-star reviews across Google and Checkatrade.</p>
+      </div>
+
+      <div class="reviews-grid">
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-quote">"Called at 8am with a burst pipe under the kitchen sink. James was with me by 9:30 and had it sorted within the hour. Tidy job, no mess left behind."</p>
+          <div class="review-author">
+            <div class="review-av" style="background:#4C8EF7;">SJ</div>
+            <div>
+              <div class="review-name">Sarah J.</div>
+              <div class="review-location">Islington, London</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-quote">"Completely replaced our old bathroom in four days. The finish is immaculate. They were punctual every single morning and left the place clean each evening."</p>
+          <div class="review-author">
+            <div class="review-av" style="background:#6366F1;">MT</div>
+            <div>
+              <div class="review-name">Marcus T.</div>
+              <div class="review-location">Hackney, London</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-quote">"Third time using Clearflow and they never disappoint. Honest pricing, no upselling, and the work is always first-rate. Wouldn't use anyone else."</p>
+          <div class="review-author">
+            <div class="review-av" style="background:#0EA5E9;">RB</div>
+            <div>
+              <div class="review-name">Rachel B.</div>
+              <div class="review-location">Chelsea, London</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-quote">"Boiler packed in during January — they had it diagnosed and a new unit fitted within 48 hours. Gas Safe registered, properly insured. Absolute peace of mind."</p>
+          <div class="review-author">
+            <div class="review-av" style="background:#3B82F6;">LP</div>
+            <div>
+              <div class="review-name">Luke P.</div>
+              <div class="review-location">Clapham, London</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-quote">"Tracked down a hidden leak that two other plumbers had missed. No unnecessary hacking of tiles — they knew exactly where to look. Genuinely impressed."</p>
+          <div class="review-author">
+            <div class="review-av" style="background:#8B5CF6;">DW</div>
+            <div>
+              <div class="review-name">Diana W.</div>
+              <div class="review-location">Fulham, London</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-quote">"Fitted a new kitchen, three radiators, and sorted a long-standing hot water pressure issue. Fair quote, no surprises on the invoice. Highly recommended."</p>
+          <div class="review-author">
+            <div class="review-av" style="background:#10B981;">AN</div>
+            <div>
+              <div class="review-name">Ahmed N.</div>
+              <div class="review-location">Stratford, London</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Contact / Lead Capture ────────────────────────────────────── -->
+  <section id="contact" style="background:var(--white);padding:100px 40px;">
+    <div class="contact-inner">
+      <div class="contact-left">
+        <div class="section-label">Get In Touch</div>
+        <h2 class="section-title">Ready to get started?</h2>
+        <p class="section-sub">Tell us about your job and we'll get back to you within two hours with a no-obligation quote.</p>
+
+        <div class="contact-perks">
+          <div class="perk">
+            <div class="perk-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              </svg>
+            </div>
+            <div class="perk-text">
+              <div class="perk-title">Gas Safe Registered</div>
+              <div class="perk-desc">All engineers hold current Gas Safe registration. Reg. no. 543221.</div>
+            </div>
+          </div>
+          <div class="perk">
+            <div class="perk-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/>
+                <polyline points="12 6 12 12 16 14"/>
+              </svg>
+            </div>
+            <div class="perk-text">
+              <div class="perk-title">Reply within 2 hours</div>
+              <div class="perk-desc">We aim to respond to every enquiry by return, same working day.</div>
+            </div>
+          </div>
+          <div class="perk">
+            <div class="perk-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="12" y1="1" x2="12" y2="23"/>
+                <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+              </svg>
+            </div>
+            <div class="perk-text">
+              <div class="perk-title">No hidden costs</div>
+              <div class="perk-desc">Fixed quotes with no surprises. What we quote is what you pay.</div>
+            </div>
+          </div>
+          <div class="perk">
+            <div class="perk-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.15 12 19.79 19.79 0 0 1 1.08 3.4 2 2 0 0 1 3.05 1h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.09 8.91A16 16 0 0 0 15 16.91l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+              </svg>
+            </div>
+            <div class="perk-text">
+              <div class="perk-title">24/7 Emergency line</div>
+              <div class="perk-desc">For urgent jobs, call 020 7123 4567 any time of day or night.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Form -->
+      <div>
+        <div class="form-card" id="form-wrap">
+          <div id="form-body">
+            <div class="form-title">Request a free quote</div>
+            <div class="form-sub">Usually back within 2 hours on weekdays.</div>
+
+            <form id="lead-form" onsubmit="handleSubmit(event)" novalidate>
+              <div class="form-row">
+                <div class="field">
+                  <label for="fname">First name</label>
+                  <input type="text" id="fname" placeholder="James" required />
+                </div>
+                <div class="field">
+                  <label for="lname">Last name</label>
+                  <input type="text" id="lname" placeholder="Richardson" required />
+                </div>
+              </div>
+
+              <div class="field">
+                <label for="email">Email address</label>
+                <input type="email" id="email" placeholder="james@email.com" required />
+              </div>
+
+              <div class="field">
+                <label for="phone">Phone number</label>
+                <input type="tel" id="phone" placeholder="07700 900000" required />
+              </div>
+
+              <div class="field">
+                <label for="service">Type of job</label>
+                <select id="service" required>
+                  <option value="" disabled selected>Select a service…</option>
+                  <option>Boiler installation or repair</option>
+                  <option>Bathroom fitting or refit</option>
+                  <option>Emergency call-out</option>
+                  <option>Leak detection or repair</option>
+                  <option>Central heating</option>
+                  <option>Kitchen plumbing</option>
+                  <option>Something else</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label for="postcode">Postcode</label>
+                <input type="text" id="postcode" placeholder="N1 1AA" required />
+              </div>
+
+              <div class="field">
+                <label for="message">Describe the job</label>
+                <textarea id="message" placeholder="Give us a brief description of the work needed…"></textarea>
+              </div>
+
+              <button type="submit" class="submit-btn">Send enquiry</button>
+              <p class="form-note">No spam, ever. We'll only contact you about your enquiry.</p>
+            </form>
+          </div>
+
+          <div class="success-msg" id="success-msg">
+            <div class="success-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+            </div>
+            <div class="success-title">Enquiry sent.</div>
+            <div class="success-body">We'll be in touch within two hours. For urgent work, call 020 7123 4567.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Footer ────────────────────────────────────────────────────── -->
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand">
+          <div class="footer-logo-mark">
+            <svg width="16" height="16" viewBox="0 0 18 18" fill="none">
+              <path d="M9 2C9 2 4 5 4 10.5C4 13.5 6.2 16 9 16C11.8 16 14 13.5 14 10.5C14 5 9 2 9 2Z" fill="white" opacity="0.9"/>
+            </svg>
+          </div>
+          <span class="footer-brand-name">Clearflow Plumbing</span>
+        </div>
+        <p class="footer-info" style="margin-top:10px;">Gas Safe Reg. 543221 &nbsp;·&nbsp; Fully insured &nbsp;·&nbsp; Serving all London boroughs</p>
+        <p class="footer-info" style="margin-top:4px;">© 2025 Clearflow Plumbing Ltd. All rights reserved.</p>
+      </div>
+      <div class="footer-contact">
+        <div class="footer-phone">020 7123 4567</div>
+        <div class="footer-email">hello@clearflowplumbing.co.uk</div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function handleSubmit(e) {
+      e.preventDefault();
+      const form = document.getElementById('form-body');
+      const success = document.getElementById('success-msg');
+
+      // Basic validation
+      const fname = document.getElementById('fname').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const service = document.getElementById('service').value;
+      const postcode = document.getElementById('postcode').value.trim();
+
+      if (!fname || !email || !phone || !service || !postcode) {
+        // Shake invalid fields
+        const fields = [
+          { el: document.getElementById('fname'), val: fname },
+          { el: document.getElementById('email'), val: email },
+          { el: document.getElementById('phone'), val: phone },
+          { el: document.getElementById('service'), val: service },
+          { el: document.getElementById('postcode'), val: postcode },
+        ];
+        fields.forEach(f => {
+          if (!f.val) {
+            f.el.style.borderColor = '#EF4444';
+            f.el.style.boxShadow = '0 0 0 3px rgba(239,68,68,0.12)';
+            f.el.addEventListener('input', () => {
+              f.el.style.borderColor = '';
+              f.el.style.boxShadow = '';
+            }, { once: true });
+          }
+        });
+        return;
+      }
+
+      // Success
+      form.style.display = 'none';
+      success.classList.add('visible');
+    }
+
+    // Smooth nav link active state
+    const navLinks = document.querySelectorAll('.nav-links a:not(.nav-cta)');
+    const sections = ['hero', 'services', 'work', 'reviews', 'contact'];
+
+    window.addEventListener('scroll', () => {
+      const scrollY = window.scrollY;
+      sections.forEach((id, i) => {
+        const el = document.getElementById(id);
+        if (!el) return;
+        const top = el.offsetTop - 80;
+        const bottom = top + el.offsetHeight;
+        if (scrollY >= top && scrollY < bottom) {
+          navLinks.forEach(l => l.style.color = '');
+          if (navLinks[i - 1]) navLinks[i - 1].style.color = 'var(--text)';
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
