@@ -1,8 +1,13 @@
 'use client'
 import { useState, useEffect, useRef } from 'react'
 
+type Form = { name: string; trade: string; contact: string; notes: string }
+
 export default function ContactModal({ onClose }: { onClose: () => void }) {
   const [sent, setSent] = useState(false)
+  const [submitting, setSubmitting] = useState(false)
+  const [error, setError] = useState<string | null>(null)
+  const [form, setForm] = useState<Form>({ name: '', trade: '', contact: '', notes: '' })
   const overlayRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -22,6 +27,42 @@ export default function ContactModal({ onClose }: { onClose: () => void }) {
     padding: '10px 13px',
     outline: 'none',
   }
+
+  const update = (k: keyof Form) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setForm(f => ({ ...f, [k]: e.target.value }))
+  }
+
+  const submit = async () => {
+    if (submitting) return
+    if (!form.name.trim() || !form.trade.trim() || !form.contact.trim()) {
+      setError('Please fill in your name, trade, and contact.')
+      return
+    }
+    setError(null)
+    setSubmitting(true)
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      })
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({} as { error?: string }))
+        throw new Error(data.error ?? 'Something went wrong. Please try again.')
+      }
+      setSent(true)
+    } catch (e) {
+      setError(e instanceof Error ? e.message : 'Something went wrong. Please try again.')
+    } finally {
+      setSubmitting(false)
+    }
+  }
+
+  const fields: Array<{ key: keyof Form; label: string; placeholder: string }> = [
+    { key: 'name', label: 'Your name', placeholder: 'e.g. Dave Hutchins' },
+    { key: 'trade', label: 'Your trade', placeholder: 'e.g. Plumber' },
+    { key: 'contact', label: 'Phone or email', placeholder: 'Best way to reach you' },
+  ]
 
   return (
     <div
@@ -61,12 +102,14 @@ export default function ContactModal({ onClose }: { onClose: () => void }) {
               Tell me your name and trade. I'll send you a link to a preview site for your business within 48 hours.
             </p>
             <div className="flex flex-col gap-4">
-              {[['Your name', 'text', 'e.g. Dave Hutchins'], ['Your trade', 'text', 'e.g. Plumber'], ['Phone or email', 'text', 'Best way to reach you']].map(([label, type, ph]) => (
-                <div key={label}>
+              {fields.map(({ key, label, placeholder }) => (
+                <div key={key}>
                   <div style={{ fontSize: 13, fontWeight: 500, color: 'var(--color-ink-2)', marginBottom: 5 }}>{label}</div>
                   <input
-                    type={type}
-                    placeholder={ph}
+                    type="text"
+                    value={form[key]}
+                    onChange={update(key)}
+                    placeholder={placeholder}
                     style={inputStyle}
                     onFocus={e => { e.target.style.borderColor = 'var(--color-accent)'; e.target.style.boxShadow = '0 0 0 3px rgba(42,94,245,0.15)' }}
                     onBlur={e => { e.target.style.borderColor = 'var(--color-border)'; e.target.style.boxShadow = 'none' }}
@@ -77,20 +120,28 @@ export default function ContactModal({ onClose }: { onClose: () => void }) {
                 <div style={{ fontSize: 13, fontWeight: 500, color: 'var(--color-ink-2)', marginBottom: 5 }}>Anything else? (optional)</div>
                 <textarea
                   rows={3}
+                  value={form.notes}
+                  onChange={update('notes')}
                   placeholder="Areas you cover, anything specific you want on the site…"
                   style={{ ...inputStyle, resize: 'vertical' }}
                   onFocus={e => { e.target.style.borderColor = 'var(--color-accent)'; e.target.style.boxShadow = '0 0 0 3px rgba(42,94,245,0.15)' }}
                   onBlur={e => { e.target.style.borderColor = 'var(--color-border)'; e.target.style.boxShadow = 'none' }}
                 />
               </div>
+              {error && (
+                <div style={{ fontSize: 13, color: '#c0392b', marginTop: -4 }}>
+                  {error}
+                </div>
+              )}
               <button
-                onClick={() => setSent(true)}
-                className="mt-1 w-full cursor-pointer transition-colors duration-150"
-                style={{ background: 'var(--color-accent)', color: '#fff', fontFamily: 'var(--font-body)', fontSize: 15, fontWeight: 500, padding: 13, borderRadius: 'var(--radius-btn)', border: 'none' }}
-                onMouseEnter={e => (e.currentTarget.style.background = 'var(--color-accent-hover)')}
-                onMouseLeave={e => (e.currentTarget.style.background = 'var(--color-accent)')}
+                onClick={submit}
+                disabled={submitting}
+                className="mt-1 w-full transition-colors duration-150"
+                style={{ background: 'var(--color-accent)', color: '#fff', fontFamily: 'var(--font-body)', fontSize: 15, fontWeight: 500, padding: 13, borderRadius: 'var(--radius-btn)', border: 'none', cursor: submitting ? 'not-allowed' : 'pointer', opacity: submitting ? 0.7 : 1 }}
+                onMouseEnter={e => { if (!submitting) e.currentTarget.style.background = 'var(--color-accent-hover)' }}
+                onMouseLeave={e => { if (!submitting) e.currentTarget.style.background = 'var(--color-accent)' }}
               >
-                Send message
+                {submitting ? 'Sending…' : 'Send message'}
               </button>
             </div>
           </>
