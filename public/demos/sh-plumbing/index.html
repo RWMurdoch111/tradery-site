@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SH Plumbing &amp; Heating — Manchester &amp; the North West</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ── Tokens ─────────────────────────────────────────── */
+    :root {
+      --navy:   #1a2744;
+      --navy-d: #111c32;
+      --gold:   #c9a84c;
+      --gold-l: #e8d08a;
+      --cream:  #faf8f4;
+      --warm:   #f2ede4;
+      --text:   #1a1a1a;
+      --muted:  #6b6355;
+      --border: rgba(26,39,68,0.12);
+
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --sans:  'DM Sans', system-ui, sans-serif;
+
+      --max: 1240px;
+      --pad: clamp(1.25rem, 4vw, 3rem);
+    }
+
+    /* ── Reset ───────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--sans); color: var(--text); background: var(--cream); -webkit-font-smoothing: antialiased; }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+
+    /* ── Utilities ────────────────────────────────────────── */
+    .container { max-width: var(--max); margin: 0 auto; padding: 0 var(--pad); }
+    .gold-rule { display: block; width: 3rem; height: 2px; background: var(--gold); }
+    .label { font-family: var(--sans); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); }
+    .section-head { margin-bottom: 3.5rem; }
+    .section-head h2 { font-family: var(--serif); font-size: clamp(2.4rem, 4vw, 3.6rem); font-weight: 300; line-height: 1.1; color: var(--navy); margin-top: 0.75rem; }
+    .section-head p { margin-top: 1rem; max-width: 42ch; color: var(--muted); font-size: 1.05rem; line-height: 1.65; }
+
+    /* ── Nav ─────────────────────────────────────────────── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(26,39,68,0.97);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(201,168,76,0.2);
+      padding: 0 var(--pad);
+    }
+    .nav-inner {
+      max-width: var(--max); margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 68px;
+    }
+    .nav-logo { display: flex; align-items: center; }
+    .nav-logo img { height: 38px; width: auto; display: block; }
+    .nav-links { display: flex; gap: 2rem; }
+    .nav-links a { font-size: 0.82rem; font-weight: 500; letter-spacing: 0.08em; color: rgba(255,255,255,0.75); text-transform: uppercase; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-cta {
+      background: var(--gold); color: var(--navy-d); border: none; cursor: pointer;
+      font-family: var(--sans); font-size: 0.82rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+      padding: 0.6rem 1.4rem; transition: background 0.2s, transform 0.15s;
+    }
+    .nav-cta:hover { background: var(--gold-l); transform: translateY(-1px); }
+
+    /* ── Hero ─────────────────────────────────────────────── */
+    #hero {
+      min-height: 100vh;
+      background: var(--navy-d);
+      display: flex; flex-direction: column;
+      position: relative; overflow: hidden;
+      padding-top: 68px;
+    }
+    .hero-pattern {
+      position: absolute; inset: 0; opacity: 0.04;
+      background-image: repeating-linear-gradient(0deg, transparent, transparent 40px, rgba(255,255,255,0.4) 40px, rgba(255,255,255,0.4) 41px),
+        repeating-linear-gradient(90deg, transparent, transparent 40px, rgba(255,255,255,0.4) 40px, rgba(255,255,255,0.4) 41px);
+    }
+    .hero-content {
+      flex: 1; display: flex; align-items: center;
+      padding: clamp(4rem, 8vh, 7rem) var(--pad);
+      position: relative; z-index: 2;
+    }
+    .hero-grid {
+      max-width: var(--max); margin: 0 auto; width: 100%;
+      display: grid; grid-template-columns: 1fr 420px; gap: 4rem; align-items: center;
+    }
+    .hero-eyebrow { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; }
+    .hero-eyebrow span { color: rgba(255,255,255,0.5); font-size: 0.78rem; letter-spacing: 0.14em; text-transform: uppercase; }
+    .hero-badge { background: var(--gold); color: var(--navy-d); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.3rem 0.7rem; }
+    .hero-title {
+      font-family: var(--serif); font-size: clamp(3rem, 6vw, 5.5rem); font-weight: 300;
+      color: white; line-height: 1.05; letter-spacing: -0.01em;
+    }
+    .hero-title em { font-style: italic; color: var(--gold); }
+    .hero-sub {
+      margin-top: 1.75rem; max-width: 46ch;
+      color: rgba(255,255,255,0.65); font-size: 1.05rem; line-height: 1.7;
+    }
+    .hero-actions { display: flex; align-items: center; gap: 1.5rem; margin-top: 2.5rem; }
+    .btn-primary {
+      background: var(--gold); color: var(--navy-d); border: none; cursor: pointer;
+      font-family: var(--sans); font-size: 0.88rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+      padding: 0.9rem 2rem; transition: background 0.2s, transform 0.15s;
+      display: inline-block;
+    }
+    .btn-primary:hover { background: var(--gold-l); transform: translateY(-2px); }
+    .btn-outline {
+      color: rgba(255,255,255,0.75); font-size: 0.88rem; font-weight: 500;
+      display: flex; align-items: center; gap: 0.5rem; transition: color 0.2s;
+    }
+    .btn-outline:hover { color: var(--gold); }
+    .btn-outline svg { width: 16px; }
+
+    .hero-phone {
+      margin-top: 3.5rem; padding-top: 2rem;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      display: flex; align-items: center; gap: 1rem;
+    }
+    .hero-phone-icon { width: 42px; height: 42px; background: rgba(201,168,76,0.15); border: 1px solid rgba(201,168,76,0.3); display: flex; align-items: center; justify-content: center; }
+    .hero-phone a { font-family: var(--serif); font-size: 1.6rem; font-weight: 400; color: white; letter-spacing: 0.02em; }
+    .hero-phone a:hover { color: var(--gold); }
+    .hero-phone-label { font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 0.15rem; }
+
+    /* Stats panel */
+    .hero-stats {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(201,168,76,0.2);
+      padding: 2.5rem;
+    }
+    .stat-item { padding: 1.25rem 0; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    .stat-item:first-child { padding-top: 0; }
+    .stat-item:last-child { border-bottom: none; padding-bottom: 0; }
+    .stat-num { font-family: var(--serif); font-size: 2.4rem; font-weight: 300; color: var(--gold); line-height: 1.1; }
+    .stat-label { font-size: 0.8rem; color: rgba(255,255,255,0.5); margin-top: 0.3rem; letter-spacing: 0.06em; }
+
+    .hero-scroll {
+      padding: 1.5rem var(--pad); text-align: center; position: relative; z-index: 2;
+    }
+    .hero-scroll span { font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.3); }
+
+    /* ── About ────────────────────────────────────────────── */
+    #about { padding: 7rem 0; background: var(--cream); }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+    .about-image-wrap { position: relative; }
+    .about-photo-placeholder {
+      aspect-ratio: 3/4; background: var(--warm);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      border: 1px solid var(--border); position: relative; overflow: hidden;
+    }
+    .about-photo-placeholder::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: repeating-linear-gradient(
+        -45deg, transparent, transparent 8px,
+        rgba(26,39,68,0.04) 8px, rgba(26,39,68,0.04) 9px
+      );
+    }
+    .placeholder-label { font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); opacity: 0.6; position: relative; z-index: 1; text-align: center; }
+    .about-badge-block {
+      position: absolute; bottom: -1.5rem; right: -1.5rem;
+      background: var(--navy); padding: 1.5rem 2rem;
+      border-left: 3px solid var(--gold);
+    }
+    .about-badge-block .num { font-family: var(--serif); font-size: 2.4rem; color: white; font-weight: 300; line-height: 1; }
+    .about-badge-block .sub { font-size: 0.72rem; color: rgba(255,255,255,0.5); letter-spacing: 0.1em; text-transform: uppercase; margin-top: 0.3rem; }
+    .about-text p { color: var(--muted); line-height: 1.75; margin-bottom: 1.25rem; font-size: 1.02rem; }
+    .about-checks { margin: 2rem 0; display: flex; flex-direction: column; gap: 0.75rem; }
+    .check-item { display: flex; align-items: flex-start; gap: 0.75rem; }
+    .check-icon { width: 18px; height: 18px; background: var(--gold); flex-shrink: 0; display: flex; align-items: center; justify-content: center; margin-top: 2px; }
+    .check-icon svg { width: 10px; height: 10px; }
+    .check-item span { font-size: 0.95rem; color: var(--text); }
+    .checkatrade-badge {
+      display: inline-flex; align-items: center; gap: 0.75rem;
+      border: 1px solid var(--border); padding: 0.75rem 1.25rem; margin-top: 1.5rem;
+    }
+    .checkatrade-badge .ct-icon { width: 28px; height: 28px; background: #00a651; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+    .checkatrade-badge .ct-icon svg { width: 14px; }
+    .checkatrade-badge span { font-size: 0.82rem; font-weight: 500; color: var(--navy); }
+
+    /* ── Services ─────────────────────────────────────────── */
+    #services { padding: 7rem 0; background: var(--navy); }
+    #services .section-head h2 { color: white; }
+    #services .section-head p { color: rgba(255,255,255,0.55); }
+    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(255,255,255,0.07); }
+    .service-card {
+      background: var(--navy); padding: 2.5rem 2rem;
+      transition: background 0.25s;
+      position: relative; overflow: hidden;
+    }
+    .service-card::after {
+      content: '';
+      position: absolute; bottom: 0; left: 0; right: 0;
+      height: 2px; background: var(--gold);
+      transform: scaleX(0); transform-origin: left;
+      transition: transform 0.3s ease;
+    }
+    .service-card:hover { background: rgba(255,255,255,0.04); }
+    .service-card:hover::after { transform: scaleX(1); }
+    .service-card.primary { background: rgba(201,168,76,0.08); }
+    .service-num { font-family: var(--serif); font-size: 3.5rem; font-weight: 300; color: rgba(255,255,255,0.07); line-height: 1; margin-bottom: 1rem; }
+    .service-card h3 { font-family: var(--serif); font-size: 1.5rem; font-weight: 400; color: white; margin-bottom: 0.75rem; }
+    .service-card p { font-size: 0.88rem; color: rgba(255,255,255,0.5); line-height: 1.65; }
+    .service-tag { display: inline-block; margin-top: 1.25rem; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); }
+    .services-secondary { margin-top: 3rem; }
+    .services-secondary h4 { font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 1rem; }
+    .services-secondary-list { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .services-secondary-list li {
+      border: 1px solid rgba(255,255,255,0.12); color: rgba(255,255,255,0.55);
+      font-size: 0.82rem; padding: 0.35rem 0.9rem; letter-spacing: 0.04em;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .services-secondary-list li:hover { border-color: var(--gold); color: var(--gold); }
+
+    /* ── Case Studies ─────────────────────────────────────── */
+    #work { padding: 7rem 0; background: var(--warm); }
+    .work-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+    .case-card { background: white; position: relative; overflow: hidden; cursor: pointer; }
+    .case-img {
+      aspect-ratio: 4/3; background: var(--warm);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      overflow: hidden; position: relative;
+    }
+    .case-img::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: repeating-linear-gradient(
+        -45deg, transparent, transparent 10px,
+        rgba(26,39,68,0.05) 10px, rgba(26,39,68,0.05) 11px
+      );
+    }
+    .case-img .img-label { font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); opacity: 0.7; position: relative; z-index: 1; text-align: center; }
+    .case-num {
+      position: absolute; top: 1rem; left: 1rem;
+      background: var(--navy); color: var(--gold);
+      font-family: var(--serif); font-size: 0.9rem; font-weight: 600;
+      padding: 0.2rem 0.6rem;
+    }
+    .case-body { padding: 1.75rem; }
+    .case-type { font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.6rem; }
+    .case-card h3 { font-family: var(--serif); font-size: 1.4rem; font-weight: 400; color: var(--navy); line-height: 1.25; margin-bottom: 0.75rem; }
+    .case-card p { font-size: 0.9rem; color: var(--muted); line-height: 1.65; }
+    .case-footer { padding: 1rem 1.75rem; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+    .case-detail { font-size: 0.78rem; color: var(--muted); }
+    .case-detail strong { color: var(--navy); }
+    .case-note {
+      margin-top: 2.5rem; padding: 1.25rem 1.5rem;
+      border-left: 3px solid var(--gold); background: rgba(201,168,76,0.08);
+    }
+    .case-note p { font-size: 0.9rem; color: var(--muted); line-height: 1.6; }
+
+    /* ── Testimonials ─────────────────────────────────────── */
+    #testimonials { padding: 7rem 0; background: var(--cream); }
+    .testi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 3.5rem; }
+    .testi-card { padding: 2.25rem; border: 1px solid var(--border); position: relative; }
+    .testi-card::before { content: '\201C'; font-family: var(--serif); font-size: 5rem; color: var(--gold); opacity: 0.3; position: absolute; top: 1rem; right: 1.5rem; line-height: 1; }
+    .testi-card.placeholder { background: rgba(26,39,68,0.02); }
+    .testi-card.placeholder blockquote { color: var(--muted); font-style: normal; font-size: 1rem; }
+    .testi-card.placeholder::before { display: none; }
+    .stars { color: var(--gold); font-size: 0.9rem; margin-bottom: 1rem; letter-spacing: 0.1em; }
+    .testi-card blockquote { font-family: var(--serif); font-size: 1.15rem; font-weight: 300; color: var(--navy); line-height: 1.6; font-style: italic; }
+    .testi-author { margin-top: 1.5rem; padding-top: 1.25rem; border-top: 1px solid var(--border); }
+    .testi-author strong { display: block; font-size: 0.88rem; font-weight: 600; color: var(--text); }
+    .testi-author span { font-size: 0.78rem; color: var(--muted); }
+    .testi-source-tag { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.75rem; display: block; }
+
+    /* ── Qualifications ───────────────────────────────────── */
+    #quals { padding: 7rem 0; background: var(--navy); }
+    #quals .section-head h2 { color: white; }
+    #quals .section-head p { color: rgba(255,255,255,0.55); }
+    .quals-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+    .qual-card { border: 1px solid rgba(255,255,255,0.1); padding: 2rem 1.5rem; transition: border-color 0.25s; }
+    .qual-card:hover { border-color: rgba(201,168,76,0.4); }
+    .qual-icon { width: 44px; height: 44px; border: 1px solid var(--gold); display: flex; align-items: center; justify-content: center; margin-bottom: 1.25rem; }
+    .qual-icon svg { width: 20px; height: 20px; stroke: var(--gold); fill: none; stroke-width: 1.5; }
+    .qual-card h3 { font-family: var(--serif); font-size: 1.2rem; font-weight: 400; color: white; margin-bottom: 0.5rem; }
+    .qual-card p { font-size: 0.85rem; color: rgba(255,255,255,0.45); line-height: 1.55; }
+
+    /* ── Service Areas ────────────────────────────────────── */
+    #areas { padding: 7rem 0; background: var(--warm); }
+    .areas-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+    .areas-map-placeholder {
+      aspect-ratio: 1.1; background: var(--cream); border: 1px solid var(--border);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      position: relative; overflow: hidden;
+    }
+    .areas-map-placeholder::before {
+      content: ''; position: absolute; inset: 0;
+      background: repeating-linear-gradient(0deg, transparent, transparent 20px, rgba(26,39,68,0.03) 20px, rgba(26,39,68,0.03) 21px),
+        repeating-linear-gradient(90deg, transparent, transparent 20px, rgba(26,39,68,0.03) 20px, rgba(26,39,68,0.03) 21px);
+    }
+    .areas-map-placeholder .img-label { font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); opacity: 0.6; position: relative; text-align: center; }
+    .areas-list { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; }
+    .area-item { display: flex; align-items: center; gap: 0.6rem; padding: 0.6rem 0; border-bottom: 1px solid var(--border); font-size: 0.9rem; color: var(--text); }
+    .area-dot { width: 6px; height: 6px; background: var(--gold); flex-shrink: 0; }
+    .areas-note { margin-top: 2rem; padding: 1.25rem 1.5rem; border-left: 3px solid var(--gold); background: rgba(201,168,76,0.06); }
+    .areas-note p { font-size: 0.88rem; color: var(--muted); line-height: 1.6; }
+
+    /* ── FAQ ──────────────────────────────────────────────── */
+    #faq { padding: 7rem 0; background: var(--cream); }
+    .faq-layout { display: grid; grid-template-columns: 1fr 2fr; gap: 5rem; }
+    .faq-list { display: flex; flex-direction: column; gap: 1px; }
+    .faq-item { border-bottom: 1px solid var(--border); }
+    .faq-q {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.25rem 0; cursor: pointer;
+      font-weight: 500; font-size: 0.97rem; color: var(--navy);
+      gap: 1rem; user-select: none;
+    }
+    .faq-q:hover { color: var(--gold); }
+    .faq-arrow { width: 20px; height: 20px; flex-shrink: 0; transition: transform 0.25s; }
+    .faq-a { font-size: 0.92rem; color: var(--muted); line-height: 1.7; padding-bottom: 1.25rem; display: none; }
+    .faq-item.open .faq-a { display: block; }
+    .faq-item.open .faq-arrow { transform: rotate(180deg); }
+    .faq-item.open .faq-q { color: var(--gold); }
+
+    /* ── Contact ──────────────────────────────────────────── */
+    #contact { padding: 7rem 0; background: var(--navy-d); }
+    #contact .section-head h2 { color: white; }
+    #contact .section-head p { color: rgba(255,255,255,0.55); }
+    .contact-layout { display: grid; grid-template-columns: 1fr 1.4fr; gap: 5rem; }
+    .contact-details { display: flex; flex-direction: column; gap: 1.75rem; }
+    .contact-item { display: flex; gap: 1.25rem; align-items: flex-start; }
+    .contact-icon { width: 44px; height: 44px; border: 1px solid rgba(201,168,76,0.3); flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
+    .contact-icon svg { width: 18px; height: 18px; stroke: var(--gold); fill: none; stroke-width: 1.5; }
+    .contact-item-label { font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 0.3rem; }
+    .contact-item-val { font-size: 1.05rem; color: white; font-weight: 400; word-break: break-word; }
+    .contact-item-val a:hover { color: var(--gold); }
+    .contact-socials { margin-top: 2rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.08); }
+    .contact-socials h4 { font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 1rem; }
+    .social-icons { display: flex; gap: 0.75rem; }
+    .social-icon { width: 38px; height: 38px; border: 1px solid rgba(255,255,255,0.12); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.5); font-size: 0.75rem; font-weight: 600; transition: border-color 0.2s, color 0.2s; }
+    .social-icon:hover { border-color: var(--gold); color: var(--gold); }
+    .contact-form { display: flex; flex-direction: column; gap: 1.25rem; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+    .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+    .form-group label { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.4); }
+    .form-group input, .form-group select, .form-group textarea {
+      background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.12); color: white;
+      padding: 0.85rem 1rem; font-family: var(--sans); font-size: 0.95rem;
+      outline: none; transition: border-color 0.2s;
+      -webkit-appearance: none;
+    }
+    .form-group select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='rgba(255,255,255,0.4)' stroke-width='1.5' fill='none'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 1rem center; }
+    .form-group select option { background: var(--navy-d); }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--gold); }
+    .form-group textarea { resize: vertical; min-height: 130px; }
+    .form-submit {
+      background: var(--gold); color: var(--navy-d); border: none; cursor: pointer;
+      font-family: var(--sans); font-size: 0.88rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 1.1rem 2.5rem; transition: background 0.2s, transform 0.15s;
+      align-self: flex-start; display: flex; align-items: center; gap: 0.6rem;
+    }
+    .form-submit:hover { background: var(--gold-l); transform: translateY(-2px); }
+    .form-success {
+      display: none; background: rgba(0,166,81,0.1); border: 1px solid rgba(0,166,81,0.3);
+      padding: 1.25rem 1.5rem; color: #4ede96; font-size: 0.92rem; line-height: 1.6;
+    }
+
+    /* ── Footer ───────────────────────────────────────────── */
+    footer { background: var(--navy-d); border-top: 1px solid rgba(255,255,255,0.06); padding: 2rem var(--pad); }
+    .footer-inner { max-width: var(--max); margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; flex-wrap: wrap; }
+    .footer-logo img { height: 32px; width: auto; display: block; }
+    .footer-text { font-size: 0.78rem; color: rgba(255,255,255,0.3); }
+
+    /* ── Responsive ────────────────────────────────────────── */
+    @media (max-width: 768px) {
+      /* Nav */
+      .nav-links { display: none; }
+      .nav-cta { font-size: 0.75rem; padding: 0.5rem 1rem; }
+      .nav-logo img { height: 30px; }
+
+      /* Hero */
+      .hero-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .hero-title { font-size: clamp(2.2rem, 8vw, 3rem); }
+      .hero-sub { font-size: 0.95rem; max-width: 100%; }
+      .hero-actions { flex-direction: column; align-items: flex-start; gap: 1rem; }
+      .btn-primary { width: 100%; text-align: center; }
+      .hero-phone { margin-top: 2rem; padding-top: 1.5rem; }
+      .hero-stats { padding: 1.75rem; }
+      .hero-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
+      .stat-item { padding: 1rem; border-bottom: 1px solid rgba(255,255,255,0.07); border-right: 1px solid rgba(255,255,255,0.07); }
+      .stat-item:nth-child(even) { border-right: none; }
+      .stat-item:nth-child(3), .stat-item:nth-child(4) { border-bottom: none; }
+      .stat-num { font-size: 1.6rem; }
+
+      /* About — text first, image second */
+      .about-grid { display: flex; flex-direction: column; gap: 3rem; }
+      .about-image-wrap { order: 2; }
+      .about-text { order: 1; }
+      .about-badge-block { display: none; }
+      #about { padding: 4rem 0; }
+
+      /* Services — 1 per row */
+      .services-grid { grid-template-columns: 1fr; }
+      #services { padding: 4rem 0; }
+
+      /* Work — 1 per row */
+      .work-grid { grid-template-columns: 1fr; }
+      #work { padding: 4rem 0; }
+
+      /* Testimonials — 1 per row */
+      .testi-grid { grid-template-columns: 1fr; }
+      #testimonials { padding: 4rem 0; }
+
+      /* Qualifications — 2 per row */
+      .quals-grid { grid-template-columns: 1fr 1fr; gap: 1rem; }
+      #quals { padding: 4rem 0; }
+
+      /* Areas */
+      .areas-layout { display: block; }
+      .areas-map-placeholder { display: none; }
+      #areas { padding: 4rem 0; }
+
+      /* FAQ */
+      .faq-layout { grid-template-columns: 1fr; gap: 2.5rem; }
+      #faq { padding: 4rem 0; }
+
+      /* Contact */
+      .contact-layout { grid-template-columns: 1fr; gap: 3rem; }
+      .form-row { grid-template-columns: 1fr; }
+      .form-submit { width: 100%; justify-content: center; }
+      #contact { padding: 4rem 0; }
+
+      /* Footer */
+      .footer-inner { flex-direction: column; gap: 0.75rem; text-align: center; }
+
+      /* Section headings */
+      .section-head { margin-bottom: 2rem; }
+      .section-head h2 { font-size: clamp(1.8rem, 6vw, 2.4rem); }
+    }
+
+    /* ── Animations ────────────────────────────────────────── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate { opacity: 0; }
+    .animate.in { animation: fadeUp 0.6s ease forwards; }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#hero" class="nav-logo"><img src="images/sh-logo.png" alt="SH Plumbing & Heating" /></a>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#work">Work</a>
+      <a href="#testimonials">Reviews</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <a href="#contact" class="nav-cta">Get a Quote</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-pattern"></div>
+  <div class="hero-content">
+    <div class="hero-grid container">
+      <div>
+        <div class="hero-eyebrow">
+          <div class="hero-badge">Manchester Based</div>
+          <span>Manchester &amp; the North West</span>
+        </div>
+        <h1 class="hero-title">Trusted <em>Plumbing &amp; Heating</em><br />Engineers in Manchester</h1>
+        <p class="hero-sub">From new boiler installations to full bathroom refurbishments, SH Plumbing &amp; Heating delivers efficient, reliable work across Manchester and the North West. Gas Safe registered, fully insured, and competitively priced.</p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn-primary">Request a Quote</a>
+          <a href="#services" class="btn-outline">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6.5"/><path d="M6 8h4M8 6l2 2-2 2"/></svg>
+            See Our Services
+          </a>
+        </div>
+        <div class="hero-phone">
+          <div class="hero-phone-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.35 12a19.79 19.79 0 01-3.07-8.67A2 2 0 012.27 1.18h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 9.06a16 16 0 006.84 6.84l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+          </div>
+          <div>
+            <div class="hero-phone-label">Call us anytime</div>
+            <a href="tel:+447753423586">07753 423 586</a>
+          </div>
+        </div>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-item">
+          <div class="stat-num">Gas Safe</div>
+          <div class="stat-label">Registered Engineers</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">£5M</div>
+          <div class="stat-label">Public Liability Insurance</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">5★</div>
+          <div class="stat-label">Customer Rated</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">Manchester</div>
+          <div class="stat-label">&amp; the North West</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-scroll"><span>Scroll to explore</span></div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-image-wrap">
+        <div class="about-photo-placeholder">
+          <div style="position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:20px;padding:32px;">
+            <div style="font-family:var(--serif);font-size:96px;font-weight:300;color:var(--gold);letter-spacing:-0.04em;line-height:1;">S&middot;H</div>
+            <div style="width:48px;height:1px;background:var(--gold);opacity:0.5;"></div>
+            <div class="placeholder-label">Plumbing &amp; Heating · Manchester</div>
+          </div>
+        </div>
+        <div class="about-badge-block">
+          <div class="num">5★</div>
+          <div class="sub">Customer Rated</div>
+        </div>
+      </div>
+      <div class="about-text">
+        <span class="label">About SH Plumbing &amp; Heating</span>
+        <h2 style="font-family:var(--serif);font-size:clamp(2rem,3.5vw,3rem);font-weight:300;color:var(--navy);line-height:1.1;margin-top:0.75rem;margin-bottom:1.5rem;">Efficient, reliable,<br /><em style="font-style:italic;">trustworthy work</em></h2>
+        <p>SH Plumbing &amp; Heating is a Manchester-based plumbing and heating company providing professional services to homeowners and landlords across the North West. Fully trained and qualified heating engineers, every job is handled to a high standard from first call to final sign-off.</p>
+        <p>Whether it's a new boiler, a leaky tap, a full bathroom fit, or a landlord safety check, we treat every customer's home with the respect it deserves. Competitive pricing, no surprises — just honest, technically competent work.</p>
+        <div class="about-checks">
+          <div class="check-item">
+            <div class="check-icon"><svg viewBox="0 0 10 10" fill="none" stroke="#1a2744" stroke-width="2"><path d="M1.5 5l3 3 4-4"/></svg></div>
+            <span>Gas Safe registered engineers</span>
+          </div>
+          <div class="check-item">
+            <div class="check-icon"><svg viewBox="0 0 10 10" fill="none" stroke="#1a2744" stroke-width="2"><path d="M1.5 5l3 3 4-4"/></svg></div>
+            <span>£5 million public liability insurance</span>
+          </div>
+          <div class="check-item">
+            <div class="check-icon"><svg viewBox="0 0 10 10" fill="none" stroke="#1a2744" stroke-width="2"><path d="M1.5 5l3 3 4-4"/></svg></div>
+            <span>Competitive, transparent pricing</span>
+          </div>
+          <div class="check-item">
+            <div class="check-icon"><svg viewBox="0 0 10 10" fill="none" stroke="#1a2744" stroke-width="2"><path d="M1.5 5l3 3 4-4"/></svg></div>
+            <span>We treat your home with respect — clean &amp; tidy work</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="container">
+    <div class="section-head">
+      <span class="label">What We Do</span>
+      <h2>Our services</h2>
+      <p>Plumbing and heating across Manchester and the North West — from new boilers and central heating to full bathroom refurbishments and landlord certificates.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card primary">
+        <div class="service-num">01</div>
+        <h3>New Boiler Installation</h3>
+        <p>Supply and installation of new boilers tailored to your home — combi, system, or regular. Gas Safe certified work, fully compliant with current regulations.</p>
+        <span class="service-tag">Core Service</span>
+      </div>
+      <div class="service-card primary">
+        <div class="service-num">02</div>
+        <h3>Central Heating Installation</h3>
+        <p>Full central heating system design, installation, and upgrades — radiators, pipework, controls, and smart thermostats. Built to last.</p>
+        <span class="service-tag">Core Service</span>
+      </div>
+      <div class="service-card primary">
+        <div class="service-num">03</div>
+        <h3>Boiler Servicing &amp; Repairs</h3>
+        <p>Annual boiler servicing to keep your system running efficiently, plus reactive repairs when something goes wrong. Quick diagnosis, honest pricing.</p>
+        <span class="service-tag">Core Service</span>
+      </div>
+      <div class="service-card">
+        <div class="service-num">04</div>
+        <h3>Bathrooms</h3>
+        <p>Full bathroom installations from strip-out to final finish — sanitaryware, plumbing, tiling, and shower systems. Built around your taste and budget.</p>
+        <span class="service-tag">Specialist</span>
+      </div>
+      <div class="service-card">
+        <div class="service-num">05</div>
+        <h3>Landlord Certificates (CP12)</h3>
+        <p>Annual gas safety certificates for rental properties. Flexible scheduling around tenants and quick turnaround on paperwork.</p>
+        <span class="service-tag">Specialist</span>
+      </div>
+      <div class="service-card">
+        <div class="service-num">06</div>
+        <h3>ADEY Magnacleanse Flush</h3>
+        <p>Professional power flush of your central heating system to remove sludge, debris, and corrosion. Improves efficiency, extends boiler life.</p>
+        <span class="service-tag">Specialist</span>
+      </div>
+    </div>
+    <div class="services-secondary">
+      <h4>Additional services</h4>
+      <ul class="services-secondary-list">
+        <li>Full Repiping</li>
+        <li>General Plumbing Repairs</li>
+        <li>Leak Detection</li>
+        <li>Radiator Installs</li>
+        <li>Tap &amp; Toilet Replacements</li>
+        <li>Outside Taps</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- CASE STUDIES -->
+<section id="work">
+  <div class="container">
+    <div class="section-head">
+      <span class="label">Recent Work</span>
+      <h2>Selected projects</h2>
+      <p>A snapshot of the kind of work we do across Manchester and the North West. More photos available on request and via our Instagram.</p>
+    </div>
+    <div class="work-grid">
+      <div class="case-card animate">
+        <div class="case-img" style="background:none;">
+          <div class="case-num">01</div>
+          <img src="images/case_study_2.png" alt="Bathroom refurbishment" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" />
+        </div>
+        <div class="case-body">
+          <div class="case-type">Full Refurbishment</div>
+          <h3>Modern Bathroom Refurbishment</h3>
+          <p>Full bathroom strip-out and rebuild — new sanitaryware, walk-in shower, large-format tiling, and all new plumbing brought up to current standards.</p>
+        </div>
+        <div class="case-footer">
+          <div class="case-detail"><strong>Location:</strong> Manchester</div>
+          <div class="case-detail"><strong>Type:</strong> Full bathroom</div>
+        </div>
+      </div>
+      <div class="case-card animate" style="animation-delay:0.1s">
+        <div class="case-img" style="background:none;">
+          <div class="case-num">02</div>
+          <img src="images/case_study_1.png" alt="Kitchen and central heating work" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" />
+        </div>
+        <div class="case-body">
+          <div class="case-type">Plumbing Fit-Out</div>
+          <h3>Kitchen Plumbing &amp; Heating</h3>
+          <p>Full plumbing fit-out for a refurbished kitchen — new sink and dishwasher feeds, isolation valves, and a tie-in to the existing heating system.</p>
+        </div>
+        <div class="case-footer">
+          <div class="case-detail"><strong>Location:</strong> Salford</div>
+          <div class="case-detail"><strong>Type:</strong> Kitchen plumbing</div>
+        </div>
+      </div>
+      <div class="case-card animate" style="animation-delay:0.2s">
+        <div class="case-img" style="background:none;">
+          <div class="case-num">03</div>
+          <img src="images/case_study_3.png" alt="Bathroom installation" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" />
+        </div>
+        <div class="case-body">
+          <div class="case-type">Bathroom Installation</div>
+          <h3>Freestanding Bath Install</h3>
+          <p>Supply and installation of a freestanding bath with new floor-mounted tap, full re-tiling, and updated waste and supply runs for a clean, modern finish.</p>
+        </div>
+        <div class="case-footer">
+          <div class="case-detail"><strong>Location:</strong> Didsbury</div>
+          <div class="case-detail"><strong>Type:</strong> Bathroom install</div>
+        </div>
+      </div>
+    </div>
+    <div class="case-note">
+      <p><strong>Note for SH:</strong> we'd swap these placeholder images for photos from your gallery on the live site. The 15 images on your existing site would slot straight in here.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="container">
+    <div class="section-head">
+      <span class="label">Reviews</span>
+      <h2>What customers say</h2>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card animate">
+        <div class="stars">★★★★★</div>
+        <blockquote>"Prompt arrival, clean &amp; tidy work, quick installation and technically very competent."</blockquote>
+        <div class="testi-author">
+          <strong>Verified customer</strong>
+          <span>SH Plumbing &amp; Heating · Manchester</span>
+        </div>
+      </div>
+      <div class="testi-card placeholder animate" style="animation-delay:0.1s">
+        <span class="testi-source-tag">Placeholder</span>
+        <blockquote>Your second review would sit here — we'd pull it from your Google or Facebook page when we go live.</blockquote>
+        <div class="testi-author">
+          <strong>Customer name</strong>
+          <span>Job type · Location</span>
+        </div>
+      </div>
+      <div class="testi-card placeholder animate" style="animation-delay:0.2s">
+        <span class="testi-source-tag">Placeholder</span>
+        <blockquote>And a third here — three short, honest reviews builds trust faster than a single long one.</blockquote>
+        <div class="testi-author">
+          <strong>Customer name</strong>
+          <span>Job type · Location</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUALIFICATIONS -->
+<section id="quals">
+  <div class="container">
+    <div class="section-head">
+      <span class="label">Credentials</span>
+      <h2>Registered &amp; qualified</h2>
+      <p>Every job is carried out by a vetted, insured, Gas Safe registered professional.</p>
+    </div>
+    <div class="quals-grid">
+      <div class="qual-card">
+        <div class="qual-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/></svg>
+        </div>
+        <h3>Gas Safe Registered</h3>
+        <p>Legally registered to work on gas appliances in the UK. All gas work certified and compliant.</p>
+      </div>
+      <div class="qual-card">
+        <div class="qual-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3>£5M Public Liability</h3>
+        <p>Fully insured for £5 million public liability — your property is protected on every job.</p>
+      </div>
+      <div class="qual-card">
+        <div class="qual-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        </div>
+        <h3>Prompt &amp; Reliable</h3>
+        <p>We turn up when we say we will, and finish jobs to the standard we'd expect in our own homes.</p>
+      </div>
+      <div class="qual-card">
+        <div class="qual-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6L12 2z"/></svg>
+        </div>
+        <h3>5★ Customer Rated</h3>
+        <p>Consistently top-rated by Manchester homeowners and landlords for quality, value, and trust.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICE AREAS -->
+<section id="areas">
+  <div class="container">
+    <div class="areas-layout">
+      <div>
+        <span class="label">Service Coverage</span>
+        <h2 style="font-family:var(--serif);font-size:clamp(2rem,3.5vw,3rem);font-weight:300;color:var(--navy);line-height:1.1;margin-top:0.75rem;margin-bottom:1rem;">Where we work</h2>
+        <p style="color:var(--muted);font-size:1rem;line-height:1.7;margin-bottom:2rem;">Based in Manchester, we work across the wider North West. Not sure if your area is covered? Just call — if we can get to you, we will.</p>
+        <div class="areas-list">
+          <div class="area-item"><div class="area-dot"></div>Manchester (M1–M22)</div>
+          <div class="area-item"><div class="area-dot"></div>Salford (M3, M5–M7)</div>
+          <div class="area-item"><div class="area-dot"></div>Didsbury (M20)</div>
+          <div class="area-item"><div class="area-dot"></div>Chorlton (M21)</div>
+          <div class="area-item"><div class="area-dot"></div>Stretford (M32)</div>
+          <div class="area-item"><div class="area-dot"></div>Trafford (M16, M17)</div>
+          <div class="area-item"><div class="area-dot"></div>Stockport (SK1–SK8)</div>
+          <div class="area-item"><div class="area-dot"></div>Altrincham (WA14)</div>
+          <div class="area-item"><div class="area-dot"></div>Bury (BL8, BL9)</div>
+          <div class="area-item"><div class="area-dot"></div>Bolton (BL1)</div>
+        </div>
+        <div class="areas-note">
+          <p><strong>Not on this list?</strong> We cover the wider North West for larger projects. Get in touch and we'll confirm coverage for your postcode.</p>
+        </div>
+      </div>
+      <div class="areas-map-placeholder">
+        <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="rgba(26,39,68,0.15)" stroke-width="1"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+        <div class="img-label" style="margin-top:0.75rem">Manchester coverage map<br/>to be placed here</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="container">
+    <div class="faq-layout">
+      <div>
+        <span class="label">FAQ</span>
+        <h2 style="font-family:var(--serif);font-size:clamp(2rem,3.5vw,3rem);font-weight:300;color:var(--navy);line-height:1.1;margin-top:0.75rem;">Common questions</h2>
+        <p style="color:var(--muted);font-size:1rem;line-height:1.7;margin-top:1rem;">Can't find what you need? Call us directly — always happy to chat.</p>
+        <a href="tel:+447753423586" style="display:inline-flex;align-items:center;gap:0.6rem;margin-top:1.5rem;font-size:0.88rem;font-weight:600;color:var(--navy);text-transform:uppercase;letter-spacing:0.08em;border-bottom:2px solid var(--gold);padding-bottom:0.2rem;">
+          07753 423 586
+        </a>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item open">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            Do you offer free quotes?
+            <svg class="faq-arrow" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 7.5l5 5 5-5"/></svg>
+          </div>
+          <div class="faq-a">Yes — free, no-obligation quotes for all jobs. For larger projects we'll visit in person; for smaller jobs we can often quote over the phone or from photos.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            Are you Gas Safe registered?
+            <svg class="faq-arrow" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 7.5l5 5 5-5"/></svg>
+          </div>
+          <div class="faq-a">Yes. SH Plumbing &amp; Heating engineers are fully Gas Safe registered. You can verify our registration on the Gas Safe Register at any time.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            Are you insured?
+            <svg class="faq-arrow" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 7.5l5 5 5-5"/></svg>
+          </div>
+          <div class="faq-a">Yes — we hold £5 million public liability insurance, so your property is fully protected on every job.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            How quickly can you start work?
+            <svg class="faq-arrow" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 7.5l5 5 5-5"/></svg>
+          </div>
+          <div class="faq-a">Urgent plumbing and boiler issues are prioritised — often same day or next day. For planned bathroom refurbs and boiler installs, typical lead time is one to two weeks.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            Do you do landlord gas certificates?
+            <svg class="faq-arrow" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 7.5l5 5 5-5"/></svg>
+          </div>
+          <div class="faq-a">Yes — annual CP12 landlord gas safety certificates across all our coverage areas. Flexible scheduling around tenants and quick turnaround on paperwork.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            What areas do you cover?
+            <svg class="faq-arrow" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 7.5l5 5 5-5"/></svg>
+          </div>
+          <div class="faq-a">Based in Manchester, we cover most of the North West — including Salford, Didsbury, Chorlton, Stretford, Trafford, Stockport, Altrincham, Bury, and Bolton. We travel further afield for larger projects.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="section-head">
+      <span class="label">Get In Touch</span>
+      <h2>Let's talk about your project</h2>
+      <p>Drop us a message and we'll get back to you within one working day — usually much faster.</p>
+    </div>
+    <div class="contact-layout">
+      <div>
+        <div class="contact-details">
+          <div class="contact-item">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.35 12a19.79 19.79 0 01-3.07-8.67A2 2 0 012.27 1.18h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 9.06a16 16 0 006.84 6.84l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+            </div>
+            <div>
+              <div class="contact-item-label">Phone</div>
+              <div class="contact-item-val"><a href="tel:+447753423586">07753 423 586</a></div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <div>
+              <div class="contact-item-label">Email</div>
+              <div class="contact-item-val"><a href="mailto:shplumbingandheating@outlook.com">shplumbingandheating@outlook.com</a></div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+            </div>
+            <div>
+              <div class="contact-item-label">Based in</div>
+              <div class="contact-item-val">Manchester &amp; the North West</div>
+            </div>
+          </div>
+        </div>
+        <div class="contact-socials">
+          <h4>Follow our work</h4>
+          <div class="social-icons">
+            <a class="social-icon" href="#" title="Instagram">IG</a>
+            <a class="social-icon" href="#" title="Facebook">FB</a>
+            <a class="social-icon" href="#" title="Google">G</a>
+          </div>
+        </div>
+      </div>
+      <div>
+        <form class="contact-form" onsubmit="submitForm(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label>First name</label>
+              <input type="text" placeholder="John" required />
+            </div>
+            <div class="form-group">
+              <label>Last name</label>
+              <input type="text" placeholder="Smith" required />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Phone number</label>
+              <input type="tel" placeholder="07700 000000" />
+            </div>
+            <div class="form-group">
+              <label>Email address</label>
+              <input type="email" placeholder="john@example.com" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Service required</label>
+            <select>
+              <option value="">Select a service...</option>
+              <option>New Boiler Installation</option>
+              <option>Central Heating Installation</option>
+              <option>Boiler Service or Repair</option>
+              <option>Bathroom Installation</option>
+              <option>Landlord Gas Certificate (CP12)</option>
+              <option>ADEY Magnacleanse Flush</option>
+              <option>General Plumbing</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Tell us about your project</label>
+            <textarea placeholder="Brief description of the work needed, your postcode, and any relevant details..."></textarea>
+          </div>
+          <button type="submit" class="form-submit">
+            Send Enquiry
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
+          <div class="form-success" id="form-success">
+            ✓ &nbsp;Thanks — we've received your enquiry and we'll be in touch within one working day.
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo"><img src="images/sh-logo.png" alt="SH Plumbing & Heating" /></div>
+    <div class="footer-text">© 2026 SH Plumbing &amp; Heating (MCR) Ltd · Manchester · 07753 423 586</div>
+    <div class="footer-text">Gas Safe Registered · £5M Insured · Company No. 13957827</div>
+  </div>
+</footer>
+
+<script>
+  function toggleFaq(el) {
+    el.closest('.faq-item').classList.toggle('open');
+  }
+
+  function submitForm(e) {
+    e.preventDefault();
+    document.getElementById('form-success').style.display = 'block';
+    e.target.querySelector('.form-submit').style.opacity = '0.5';
+    e.target.querySelector('.form-submit').disabled = true;
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.animate').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
