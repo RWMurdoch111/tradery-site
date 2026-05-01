@@ -26,7 +26,7 @@ export default function About() {
               Hi, I'm Robbie.
             </h2>
             <p style={{ fontSize: 17, color: 'var(--color-ink-3)', lineHeight: 1.7, marginBottom: 16, maxWidth: 520 }}>
-              I have a background in product and marketing, and I've spent the last few years watching great tradespeople lose work to competitors with better websites — not better skills.
+              I have a background in product and web design, and I've spent the last few years watching great tradespeople lose work to competitors with better websites — not better skills.
             </p>
             <p style={{ fontSize: 17, color: 'var(--color-ink-3)', lineHeight: 1.7, marginBottom: 16, maxWidth: 520 }}>
               Tradery is my attempt to fix that. I build fast, professional websites specifically for independent tradespeople — priced fairly, handed over fully, with no ongoing lock-in.
